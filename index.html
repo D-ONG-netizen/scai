@@ -1,0 +1,1400 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2E6E5E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>SCAI ME1 Study Hub</title>
+<style>
+:root{
+  --bg:#F5F6F2;
+  --bg2:#EAEEE9;
+  --surface:#FFFFFF;
+  --surface2:#F8F9F6;
+  --ink:#17211C;
+  --muted:#5F6C66;
+  --line:#D8DED8;
+  --grid:rgba(23,33,28,.045);
+  --halo:rgba(46,110,94,.08);
+  --accent:#C4522E;
+  --accent-soft:#F6E5DE;
+  --teal:#2E6E5E;
+  --teal-soft:#E1EEE9;
+  --blue:#3B6F8F;
+  --blue-soft:#E3EDF2;
+  --gold:#A67C00;
+  --gold-soft:#F4EBD4;
+  --danger:#B3402E;
+  --danger-soft:#F7E2DD;
+  --ok:#2E6E5E;
+  --ok-soft:#E1EEE9;
+  --shadow:0 12px 34px rgba(23,33,28,.08);
+  --radius:8px;
+  --font-display:Georgia,"Times New Roman","Noto Serif SC","Songti SC",serif;
+  --font-body:"Segoe UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --font-mono:"Cascadia Mono","Consolas","Courier New",monospace;
+}
+:root[data-theme="dark"]{
+  --bg:#101512;
+  --bg2:#151C18;
+  --surface:#1A221E;
+  --surface2:#202B25;
+  --ink:#E8EEE9;
+  --muted:#9AA79F;
+  --line:#33413A;
+  --grid:rgba(232,238,233,.035);
+  --halo:rgba(93,163,150,.07);
+  --accent:#E0704D;
+  --accent-soft:#3A2720;
+  --teal:#5DA396;
+  --teal-soft:#213832;
+  --blue:#77A7C2;
+  --blue-soft:#21333D;
+  --gold:#D1A93E;
+  --gold-soft:#3A3218;
+  --danger:#E07A68;
+  --danger-soft:#3A241F;
+  --ok:#7BC0A4;
+  --ok-soft:#1F3A30;
+  --shadow:0 14px 38px rgba(0,0,0,.38);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:radial-gradient(1100px 540px at 82% -8%,var(--halo),transparent 62%);
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.shell{position:relative;z-index:1;min-height:100vh}
+.topbar{
+  position:sticky;top:0;z-index:30;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:11px clamp(16px,4vw,40px);
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 1px 0 rgba(23,33,28,.02);
+}
+.brand{
+  font-family:var(--font-display);font-weight:700;font-size:1.06rem;letter-spacing:.05em;
+  color:var(--ink);text-decoration:none;white-space:nowrap;
+}
+.brand span{color:var(--accent)}
+.nav{display:flex;gap:2px;flex-wrap:wrap}
+.nav a{
+  padding:8px 12px;border-radius:6px;color:var(--muted);text-decoration:none;font-size:.92rem;
+  border-bottom:2px solid transparent;
+}
+.nav a:hover{color:var(--ink)}
+.nav a.active{color:var(--ink);background:var(--surface2);border-bottom-color:var(--accent)}
+.top-actions{display:flex;gap:8px;align-items:center}
+.icon-btn{
+  width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);
+}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn svg{width:17px;height:17px}
+main{width:min(1180px,100% - 32px);margin:0 auto;padding:34px 0 90px}
+.hero{padding:26px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.kicker{
+  font:600 .76rem/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+}
+.hero h1{
+  font-family:var(--font-display);font-size:clamp(2rem,5vw,3.25rem);line-height:1.08;
+  margin:10px 0 10px;font-weight:600;text-wrap:balance;
+}
+.hero p{max-width:70ch;color:var(--muted);margin:0}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.stat{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;font-variant-numeric:tabular-nums;
+}
+.stat b{display:block;font-family:var(--font-display);font-size:1.85rem;line-height:1.1}
+.stat span{color:var(--muted);font-size:.85rem}
+.section{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:36px 0 14px}
+.section h2{font-family:var(--font-display);font-size:1.5rem;margin:0;font-weight:600}
+.section .note{color:var(--muted);font-size:.85rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.panel h3{margin:0 0 10px;font-size:1.05rem}
+.panel p{margin:6px 0}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 16px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);color:var(--ink);font-size:.92rem;text-decoration:none;
+}
+.btn:hover{border-color:var(--accent)}
+.btn svg{width:16px;height:16px}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(.94)}
+.btn-ghost{background:transparent}
+.course-list{display:grid;gap:10px}
+.course-row{
+  display:grid;grid-template-columns:8px 1fr auto;gap:16px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:15px 18px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;
+}
+.course-row:hover{border-color:var(--accent);transform:translateY(-1px)}
+.course-row .bar{width:6px;height:46px;border-radius:4px;background:var(--accent)}
+.course-row h3{margin:0;font-size:1.06rem}
+.course-row p{margin:2px 0 0;color:var(--muted);font-size:.88rem}
+.course-row .meta{font-family:var(--font-mono);font-size:.76rem;color:var(--muted);text-align:right}
+.tag{
+  display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;
+  font-size:.76rem;font-weight:600;white-space:nowrap;
+}
+.tag-point{background:var(--teal-soft);color:var(--teal)}
+.tag-pitfall{background:var(--danger-soft);color:var(--danger)}
+.tag-exam{background:var(--gold-soft);color:var(--gold)}
+.tag-blue{background:var(--blue-soft);color:var(--blue)}
+.lesson{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);margin-bottom:10px;overflow:hidden}
+.lesson summary{
+  cursor:pointer;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  list-style:none;
+}
+.lesson summary::-webkit-details-marker{display:none}
+.lesson summary .ltitle{font-weight:600;font-size:.98rem}
+.lesson summary .lmeta{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);white-space:nowrap}
+.lesson[open] summary{border-bottom:1px solid var(--line);background:var(--surface2)}
+.lesson-body{padding:16px}
+.lesson-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.lesson-col h4{
+  margin:0 0 8px;font:700 .78rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;
+}
+.lesson-col.points h4{color:var(--teal)}
+.lesson-col.pitfalls h4{color:var(--danger)}
+.lesson-col.exams h4{color:var(--gold)}
+.lesson-col ul{margin:0;padding-left:18px}
+.lesson-col li{margin:5px 0;font-size:.9rem}
+.lesson-col.points li::marker{color:var(--teal)}
+.lesson-col.pitfalls li::marker{color:var(--danger)}
+.lesson-col.exams li::marker{color:var(--gold)}
+.video-list{display:grid;gap:8px}
+.video-link{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius);
+  text-decoration:none;color:inherit;background:var(--surface2);font-size:.9rem;
+}
+.video-link:hover{border-color:var(--accent)}
+.video-link .src{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);white-space:nowrap}
+.quiz .qitem{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;background:var(--surface)}
+.qitem legend{font-weight:600;padding:0 4px}
+.qitem .opt{display:block;padding:8px 10px;border:1px solid transparent;border-radius:6px;margin-top:5px;cursor:pointer}
+.qitem .opt:hover{background:var(--surface2)}
+.qitem .opt input{margin-right:8px}
+.qitem.correct{border-color:var(--ok);background:var(--ok-soft)}
+.qitem.wrong{border-color:var(--danger);background:var(--danger-soft)}
+.q-explain{font-size:.88rem;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)}
+.quiz-actions{display:flex;gap:10px;margin-top:14px}
+.quiz-score{
+  font-family:var(--font-mono);font-size:.95rem;padding:12px 14px;border-radius:var(--radius);
+  background:var(--surface2);border:1px solid var(--line);margin-top:14px;
+}
+.practice-list{display:grid;gap:8px}
+.practice-link{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 13px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);text-decoration:none;color:inherit;
+}
+.practice-link:hover{border-color:var(--teal)}
+.practice-link .note{color:var(--muted);font-size:.82rem}
+.pdf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.pdf-link{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);text-decoration:none;color:inherit;
+}
+.pdf-link:hover{border-color:var(--accent);background:var(--surface2)}
+.pdf-link b{display:block;font-size:.92rem;line-height:1.35}
+.pdf-link small{color:var(--muted);font-size:.78rem}
+.pdf-link .file-badge{
+  flex:0 0 auto;font-family:var(--font-mono);font-size:.7rem;padding:5px 8px;border-radius:6px;
+  background:var(--accent-soft);color:var(--accent);font-weight:700;
+}
+.pdf-lib-grid{display:grid;gap:10px}
+.pdf-lib-course{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:16px}
+.pdf-lib-course h3{margin:0 0 4px}
+.pdf-lib-course .sub{color:var(--muted);font-size:.84rem;margin-bottom:12px}
+.week-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.week-tabs button{
+  padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  cursor:pointer;font-size:.85rem;color:var(--muted);
+}
+.week-tabs button:hover{color:var(--ink)}
+.week-tabs button.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+:root[data-theme="dark"] .week-tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.focus-list{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.focus-chip{
+  padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface2);font-size:.86rem;
+}
+.check-list{list-style:none;margin:8px 0;padding:0}
+.check-list li{padding:6px 0 6px 26px;position:relative;font-size:.92rem}
+.check-list li::before{
+  content:"✓";position:absolute;left:2px;top:6px;width:17px;height:17px;border-radius:50%;
+  background:var(--teal-soft);color:var(--teal);font-size:.72rem;display:flex;align-items:center;justify-content:center;
+}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font:700 .75rem/1.2 var(--font-mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+.compare-table td{min-width:150px}
+.term-table td:first-child{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+.tt-grid{display:grid;grid-template-columns:90px repeat(5,1fr);gap:6px;overflow-x:auto;min-width:660px}
+.tt-head{font-weight:700;font-size:.85rem}
+.tt-cell{background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:8px;font-size:.8rem;min-height:46px}
+.tt-cell .tt-course{font-weight:600}
+.drop{border:1px dashed var(--line);border-radius:var(--radius);padding:20px;text-align:center;background:var(--surface2)}
+.drop strong{display:block;margin-bottom:6px}
+.drop small{color:var(--muted)}
+.file-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.file-list li{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);font-size:.88rem;
+}
+.file-list .fname{font-weight:600}
+.file-list .fmeta{color:var(--muted);font-family:var(--font-mono);font-size:.75rem}
+.file-list button{border:none;background:none;color:var(--danger);cursor:pointer;font-size:.82rem}
+.chat-panel{
+  position:fixed;right:20px;bottom:20px;width:min(410px,calc(100vw - 32px));
+  max-height:min(74vh,740px);background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;z-index:50;
+  transform:translateY(18px);opacity:0;pointer-events:none;transition:transform .18s ease,opacity .18s ease;
+}
+.chat-panel.open{transform:none;opacity:1;pointer-events:auto}
+.chat-head{
+  display:flex;align-items:center;justify-content:space-between;padding:13px 16px;
+  border-bottom:1px solid var(--line);
+}
+.chat-head b{font-family:var(--font-display);font-size:1rem}
+.chat-head .sub{color:var(--muted);font-size:.75rem}
+.chat-head button{border:none;background:none;color:var(--muted);font-size:1.2rem;line-height:1}
+.chat-msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:280px;max-height:48vh}
+.msg{max-width:88%;padding:10px 12px;border-radius:11px;font-size:.9rem;white-space:pre-wrap;word-break:break-word}
+.msg.user{align-self:flex-end;background:var(--ink);color:var(--bg)}
+.msg.bot{align-self:flex-start;background:var(--surface2);border:1px solid var(--line)}
+.msg .mhead{display:block;font:700 .68rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;color:var(--muted)}
+.msg.user .mhead{color:var(--muted)}
+.chat-actions{padding:10px 12px;border-top:1px solid var(--line);display:flex;gap:8px}
+.chat-actions .btn{flex:1;padding:8px 10px;font-size:.82rem}
+.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-form input{
+  flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);color:var(--ink);
+}
+.chat-form button{padding:10px 14px}
+.modal{
+  position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,15,12,.5);opacity:0;pointer-events:none;transition:opacity .18s ease;
+  padding:16px;
+}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-panel{
+  width:min(580px,100%);background:var(--surface);border-radius:14px;padding:24px;
+  max-height:86vh;overflow:auto;box-shadow:var(--shadow);
+}
+.modal-panel h2{margin:0 0 16px;font-family:var(--font-display);font-size:1.35rem}
+.form-grid{display:grid;gap:12px}
+.field{display:grid;gap:5px}
+.field label{font-size:.84rem;font-weight:600}
+.field input,.field select{
+  padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);
+}
+.field small{color:var(--muted);font-size:.78rem}
+.modal-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:18px}
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);
+  background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.88rem;
+  opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:70;box-shadow:var(--shadow);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.empty{color:var(--muted);padding:18px 0;font-size:.9rem}
+.divider{border:none;border-top:1px solid var(--line);margin:24px 0}
+.search-modal{
+  position:fixed;inset:0;z-index:80;display:flex;justify-content:center;align-items:flex-start;
+  padding:10vh 16px 16px;background:rgba(10,15,12,.46);opacity:0;pointer-events:none;transition:opacity .16s ease;
+}
+.search-modal.open{opacity:1;pointer-events:auto}
+.search-panel{
+  width:min(680px,100%);background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.search-panel input{
+  width:100%;padding:15px 18px;border:none;border-bottom:1px solid var(--line);
+  background:var(--surface2);color:var(--ink);font-size:1rem;outline:none;
+}
+.search-results{max-height:52vh;overflow:auto;padding:8px;display:grid;gap:6px}
+.search-item{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;
+  width:100%;padding:10px 12px;border:1px solid transparent;border-radius:var(--radius);
+  background:transparent;color:var(--ink);font-size:.9rem;cursor:pointer;
+}
+.search-item:hover,.search-item.active{background:var(--surface2);border-color:var(--line)}
+.search-item b{display:block;font-weight:600}
+.search-item small{color:var(--muted);font-size:.76rem}
+.search-item .s-tag{flex:0 0 auto;font-family:var(--font-mono);font-size:.68rem;color:var(--accent);background:var(--accent-soft);padding:3px 7px;border-radius:999px}
+.search-hint{padding:9px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem}
+.progress-wrap{display:grid;gap:8px;margin:10px 0}
+.progress-track{height:9px;border-radius:999px;background:var(--line);overflow:hidden}
+.progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .3s ease}
+.progress-meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.82rem}
+.lesson-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 4px}
+.lesson-tools .btn{padding:7px 11px;font-size:.8rem}
+.lesson-extra-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 4px}
+.lesson-extra-links .btn{padding:8px 12px;font-size:.84rem}
+.status-chip{font-size:.76rem;font-weight:600;color:var(--muted)}
+.status-chip.done{color:var(--teal)}
+.status-chip.review{color:var(--gold)}
+.lesson-notes{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+.lesson-notes h4{margin:0 0 6px;font:700 .76rem/1 var(--font-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--blue)}
+.lesson-notes textarea{
+  width:100%;min-height:84px;resize:vertical;padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface2);color:var(--ink);font:inherit;font-size:.88rem;line-height:1.55;
+}
+.concept-card{
+  margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--surface2),var(--surface));border-left:4px solid var(--teal);
+}
+.concept-card b{color:var(--teal)}
+.concept-card p{margin:4px 0 10px}
+.concept-flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.concept-flow span{
+  padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  font-size:.74rem;color:var(--muted);
+}
+.concept-watch{font-size:.84rem;margin-top:8px}
+.review-list{display:grid;gap:8px}
+.review-link{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 13px;
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  text-decoration:none;color:inherit;
+}
+.review-link:hover{border-color:var(--gold)}
+.review-link small{color:var(--muted);font-size:.78rem}
+.review-link .due{flex:0 0 auto;font-family:var(--font-mono);font-size:.72rem;color:var(--gold)}
+@media (max-width:900px){
+  .topbar{flex-wrap:wrap}
+  .nav{order:3;width:100%;overflow-x:auto;padding-bottom:2px}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  main{width:min(100% - 20px,1180px)}
+  .hero h1{font-size:2rem}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .course-row{grid-template-columns:8px 1fr}
+  .course-row .meta{display:none}
+  .lesson-grid{grid-template-columns:1fr}
+  .lesson summary{flex-direction:column;align-items:flex-start;gap:4px}
+  .lesson summary .lmeta{white-space:normal}
+  .chat-panel{right:10px;bottom:10px;width:calc(100vw - 20px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;scroll-behavior:auto!important}
+}
+@media print{
+  body{background:#fff}
+  .topbar,.chat-panel,.modal,.search-modal,.toast,.chat-actions{display:none!important}
+  main{width:100%!important;max-width:none!important}
+  .lesson{break-inside:avoid}
+  .lesson-notes textarea{border:none;background:none}
+  a{color:#000}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="#/home">SCAI <span>STUDY</span></a>
+    <nav class="nav" id="nav" aria-label="主导航"></nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="searchBtn" title="搜索课程 / 知识点 / 视频（Ctrl+K）" aria-label="搜索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" title="切换主题" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="icon-btn" id="settingsBtn" title="设置" aria-label="设置">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+      <button class="btn btn-primary" id="aiBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.7L20 10l-6.1 1.3L12 17l-1.9-5.7L4 10l6.1-1.3z"/><path d="M19 15l.7 2.1L22 18l-2.3.9L19 21l-.7-2.1L16 18l2.3-.9z"/></svg>
+        AI 助手
+      </button>
+    </div>
+  </header>
+  <main id="app"></main>
+</div>
+
+<aside class="chat-panel" id="chatPanel" aria-label="AI 学习助手">
+  <div class="chat-head">
+    <div>
+      <b>AI 学习助手</b>
+      <div class="sub" id="chatCourse">未选择课程</div>
+    </div>
+    <button id="chatClose" aria-label="关闭助手">×</button>
+  </div>
+  <div class="chat-msgs" id="chatMessages"></div>
+  <div class="chat-actions">
+    <button class="btn" id="chatPlan">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.7L20 10l-6.1 1.3L12 17l-1.9-5.7L4 10l6.1-1.3z"/></svg>
+      根据课件调整计划
+    </button>
+  </div>
+  <form class="chat-form" id="chatForm">
+    <input id="chatInput" placeholder="问当前课程的问题..." autocomplete="off">
+    <button class="btn btn-primary" type="submit">发送</button>
+  </form>
+</aside>
+
+<div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="全局搜索">
+  <div class="search-panel">
+    <input id="searchInput" placeholder="搜索课程、知识点、易错点、视频或在线题库..." autocomplete="off" aria-label="搜索内容">
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-hint">↑↓ 选择 · Enter 打开 · Esc 关闭</div>
+  </div>
+</div>
+
+<div class="modal" id="settingsModal" role="dialog" aria-modal="true" aria-label="设置">
+  <div class="modal-panel">
+    <h2>设置</h2>
+    <div class="form-grid">
+      <div class="field">
+        <label for="cfgBase">Base URL</label>
+        <input id="cfgBase" type="text" placeholder="https://api.deepseek.com/v1">
+        <small>OpenAI 兼容接口地址。</small>
+      </div>
+      <div class="field">
+        <label for="cfgModel">模型</label>
+        <input id="cfgModel" type="text" placeholder="deepseek-chat">
+        <small>例如 deepseek-chat、gpt-4o-mini、qwen-plus。</small>
+      </div>
+      <div class="field">
+        <label for="cfgKey">API Key</label>
+        <input id="cfgKey" type="password" placeholder="sk-...">
+        <small>只保存在本机浏览器与 config.local.js，不提交到公开仓库。</small>
+      </div>
+      <div class="field">
+        <label for="cfgCourse">默认 AI 课程上下文</label>
+        <select id="cfgCourse"></select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" id="cfgClear">清除本地数据</button>
+      <button class="btn" id="cfgExport">导出数据</button>
+      <label class="btn" for="cfgImportFile">导入数据</label>
+      <input type="file" id="cfgImportFile" accept=".json,application/json" style="display:none">
+      <button class="btn btn-primary" id="cfgSave">保存配置</button>
+      <button class="btn" id="cfgClose">关闭</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="config.local.js"></script>
+<script src="data-courses.js"></script>
+<script src="lesson-extra.js"></script>
+<script src="data-meta.js"></script>
+<script>
+(function(){
+"use strict";
+const data = window.SCAI_COURSES || [];
+const meta = window.SCAI_META || {};
+const books = window.SCAI_BOOKS || [];
+const plan = window.SCAI_PLAN || {weeks:[],daily:[]};
+const compare = window.SCAI_COMPARE || {similarities:[],differences:[],terms:[]};
+const DAYS = ["周一","周二","周三","周四","周五","周六","周日"];
+
+const $ = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const LS = {
+  get(k,d){ try{ const v=localStorage.getItem(k); return v==null?d:JSON.parse(v); }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+
+let state = {
+  theme: LS.get("scai_theme","light"),
+  quiz: LS.get("scai_quiz_scores",{}),
+  progress: LS.get("scai_progress",{}),
+  notes: LS.get("scai_notes",{}),
+  courseware: LS.get("scai_uploaded_courseware",{}),
+  llm: LS.get("scai_llm_config", null),
+  chat: [],
+  currentCourse: null,
+  week: LS.get("scai_plan_week", null),
+  timetable: LS.get("scai_timetable", null)
+};
+
+function esc(s){
+  return String(s==null?"":s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+function save(){
+  LS.set("scai_quiz_scores",state.quiz);
+  LS.set("scai_progress",state.progress);
+  LS.set("scai_notes",state.notes);
+  LS.set("scai_uploaded_courseware",state.courseware);
+  LS.set("scai_llm_config",state.llm);
+  LS.set("scai_plan_week",state.week);
+  LS.set("scai_timetable",state.timetable);
+}
+function toast(msg){
+  const t=$("#toast"); if(!t) return;
+  t.textContent=msg; t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove("show"),2600);
+}
+function getRoute(){
+  const h=location.hash.replace(/^#\/?/,"").replace(/\/$/,"");
+  const parts=h.split("/").filter(Boolean);
+  if(parts[0]==="course" && parts[1]) return {name:"course",id:parts[1],lesson:parts[2]||null};
+  const names=["home","plan","books","compare","pdfs"];
+  if(names.includes(parts[0])) return {name:parts[0]};
+  return {name:"home"};
+}
+function currentWeek(){
+  const start=new Date(2026,8,13);
+  const diff=Math.floor((new Date()-start)/86400000);
+  if(diff<0) return 1;
+  return Math.min(16,Math.max(1,Math.floor(diff/7)+1));
+}
+function activeWeek(){ return state.week||currentWeek(); }
+function videoCount(){ return data.reduce((n,c)=>n+c.lessons.reduce((m,l)=>m+(l.videos?l.videos.length:0),0),0); }
+function pdfCount(){ return data.reduce((n,c)=>n+c.lessons.length,0); }
+function lessonKey(cid,lid){ return cid+"::"+lid; }
+function progressStats(){
+  const vals=Object.values(state.progress);
+  return {
+    done:vals.filter(v=>v&&v.status==="done").length,
+    review:vals.filter(v=>v&&v.status==="review").length,
+    total:pdfCount()
+  };
+}
+function dueReviewLessons(){
+  const end=new Date(); end.setHours(23,59,59,999);
+  const out=[];
+  data.forEach(c=>c.lessons.forEach(l=>{
+    const p=state.progress[lessonKey(c.id,l.id)];
+    if(p&&p.status==="review"&&p.due&&p.due<=end.getTime()) out.push({course:c,lesson:l,due:p.due});
+  }));
+  return out.sort((a,b)=>a.due-b.due);
+}
+function courseName(id){ const c=data.find(x=>x.id===id); return c?c.name:"未知课程"; }
+let searchActive=-1;
+let searchResults=[];
+const searchIndex=buildSearchIndex();
+function buildSearchIndex(){
+  const out=[];
+  data.forEach(c=>{
+    c.lessons.forEach(l=>{
+      const lessonText=[c.name,l.title,l.en,l.chapters,l.focus,...(l.points||[]),...(l.pitfalls||[]),...(l.exams||[])].join(" ");
+      out.push({type:"课程",kind:"lesson",hash:"#/course/"+c.id+"/"+l.id,title:c.name+" · "+l.title,sub:l.chapters+" · "+l.focus,text:lessonText});
+      (l.videos||[]).forEach(v=>out.push({
+        type:"视频",kind:"video",url:v.url,title:v.title,sub:c.name+" · "+l.title+" · "+(v.source||"视频"),
+        text:[v.title,v.source||"",c.name,l.title].join(" ")
+      }));
+    });
+    (c.extraVideos||[]).forEach(v=>out.push({
+      type:"视频",kind:"video",url:v.url,title:v.title,sub:c.name+" · 配套视频库 · "+(v.source||"视频"),
+      text:[v.title,v.source||"",v.note||"",c.name].join(" ")
+    }));
+    [...(c.online||[]),...(c.practice||[])].forEach(p=>out.push({
+      type:"练习",kind:"link",url:p.url,title:p.title,sub:c.name+" · "+(p.note||""),
+      text:[p.title,p.note||"",c.name].join(" ")
+    }));
+  });
+  books.forEach(b=>out.push({
+    type:"教材",kind:"book",hash:"#/books",title:b.title,sub:b.author+" · "+b.edition,
+    text:[b.title,b.author,b.edition,b.course].join(" ")
+  }));
+  (plan.weeks||[]).forEach(w=>out.push({
+    type:"计划",kind:"plan",hash:"#/plan",title:"第 "+w.week+" 周 · "+w.theme,
+    sub:(w.focus||[]).join(" / "),text:[w.theme,...(w.focus||[]),...(w.milestones||[]),...(w.verify||[])].join(" ")
+  }));
+  return out;
+}
+function openSearch(){
+  $("#searchModal").classList.add("open");
+  $("#searchInput").value="";
+  renderSearch("");
+  setTimeout(()=>$("#searchInput").focus(),30);
+}
+function closeSearch(){
+  $("#searchModal").classList.remove("open");
+  searchActive=-1;
+  searchResults=[];
+}
+function renderSearch(q){
+  const term=q.trim().toLowerCase();
+  searchResults=term
+    ? searchIndex.filter(it=>it.text.toLowerCase().includes(term)||it.title.toLowerCase().includes(term)).slice(0,12)
+    : searchIndex.slice(0,8);
+  searchActive=searchResults.length?0:-1;
+  const box=$("#searchResults");
+  box.innerHTML=searchResults.length
+    ? searchResults.map((it,i)=>`
+      <button class="search-item${i===searchActive?" active":""}" data-i="${i}" type="button">
+        <span><b>${esc(it.title)}</b><small>${esc(it.sub)}</small></span>
+        <span class="s-tag">${esc(it.type)}</span>
+      </button>`).join("")
+    : `<div class="empty">没有找到相关内容，试试搜索“极限”、“矩阵”、“牛顿”或“Python”。</div>`;
+  $$(".search-item",box).forEach(btn=>btn.addEventListener("click",()=>{
+    const it=searchResults[Number(btn.dataset.i)];
+    if(!it) return;
+    if(it.url) window.open(it.url,"_blank","noopener");
+    else{
+      if(it.kind==="plan"){
+        const m=it.title.match(/第\s*(\d+)\s*周/);
+        if(m){ state.week=Number(m[1]); save(); }
+      }
+      location.hash=it.hash;
+    }
+    closeSearch();
+  }));
+}
+function moveSearch(delta){
+  if(!searchResults.length) return;
+  searchActive=(searchActive+delta+searchResults.length)%searchResults.length;
+  $$(".search-item",$("#searchResults")).forEach((b,i)=>b.classList.toggle("active",i===searchActive));
+}
+function bindSearch(){
+  $("#searchBtn").addEventListener("click",openSearch);
+  $("#searchInput").addEventListener("input",e=>renderSearch(e.target.value));
+  $("#searchInput").addEventListener("keydown",e=>{
+    if(e.key==="ArrowDown"){ e.preventDefault(); moveSearch(1); }
+    else if(e.key==="ArrowUp"){ e.preventDefault(); moveSearch(-1); }
+    else if(e.key==="Enter"){
+      e.preventDefault();
+      const btn=$(".search-item.active",$("#searchResults"));
+      if(btn) btn.click();
+    }
+  });
+  $("#searchModal").addEventListener("click",e=>{ if(e.target.id==="searchModal") closeSearch(); });
+  document.addEventListener("keydown",e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
+      e.preventDefault();
+      $("#searchModal").classList.contains("open")?closeSearch():openSearch();
+    }else if(e.key==="Escape"&&$("#searchModal").classList.contains("open")){
+      closeSearch();
+    }
+  });
+}
+function renderNav(){
+  const r=getRoute();
+  const items=[["home","总览"],["plan","16周计划"],["books","教材地图"],["compare","教材对比"],["pdfs","PDF 资料库"]];
+  $("#nav").innerHTML=items.map(([id,label])=>`<a href="#/${id}" class="${r.name===id?"active":""}">${label}</a>`).join("");
+}
+function applyTheme(){
+  document.documentElement.setAttribute("data-theme",state.theme);
+  LS.set("scai_theme",state.theme);
+  const b=$("#themeBtn");
+  if(b){
+    b.innerHTML = state.theme==="dark"
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+}
+function render(){
+  renderNav(); applyTheme();
+  const r=getRoute();
+  let html="";
+  if(r.name==="course"){
+    const c=data.find(x=>x.id===r.id);
+    html=c?renderCourseHTML(c):`<section class="hero"><h1>课程不存在</h1><p><a href="#/home">返回总览</a></p></section>`;
+  } else if(r.name==="plan") html=renderPlanHTML();
+  else if(r.name==="books") html=renderBooksHTML();
+  else if(r.name==="compare") html=renderCompareHTML();
+  else if(r.name==="pdfs") html=renderPdfLibraryHTML();
+  else html=renderHomeHTML();
+  $("#app").innerHTML=html;
+  if(r.name==="course"){
+    const c=data.find(x=>x.id===r.id);
+    if(c){
+      state.currentCourse=c.id;
+      bindCourse(c);
+      if(r.lesson){
+        const li=c.lessons.findIndex(l=>l.id===r.lesson);
+        const det=$(`details[data-li="${li}"]`);
+        if(det){
+          det.open=true;
+          det.scrollIntoView({behavior:"smooth",block:"start"});
+        }
+      }
+    }
+  }
+  if(r.name==="plan") bindPlan();
+}
+
+function renderHomeHTML(){
+  const wk=plan.weeks[activeWeek()-1]||plan.weeks[0];
+  const p=progressStats();
+  const reviews=dueReviewLessons();
+  const rows=data.map(c=>`
+    <a class="course-row" href="#/course/${c.id}">
+      <span class="bar" style="background:${c.accent}"></span>
+      <span><h3>${esc(c.name)}</h3><p>${esc(c.enName)}</p></span>
+      <span class="meta">${esc(c.chapters)}<br>${esc(c.semester==="fall"?"本学期":"自学 / 先修")}</span>
+    </a>`).join("");
+  return `
+  <section class="hero">
+    <div class="kicker">${esc(meta.semester)}</div>
+    <h1>大一全教材学习中心</h1>
+    <p>${esc(meta.subtitle)}。以 6 本官方教材为底，用 16 周计划、每课 PDF 讲义、在线题库与 AI 伴学把大一课程一次学透。</p>
+  </section>
+  <div class="stat-row">
+    <div class="stat"><b>${data.length}</b><span>课程模块</span></div>
+    <div class="stat"><b>${plan.weeks.length}</b><span>周计划</span></div>
+    <div class="stat"><b>${p.done}/${p.total}</b><span>学习进度</span></div>
+    <div class="stat"><b>${videoCount()}</b><span>匹配视频</span></div>
+  </div>
+  <div class="panel">
+    <div class="section" style="margin-top:0"><h2>本周 · 第 ${activeWeek()} 周 ${wk?esc(wk.theme):""}</h2><span class="note">${wk?esc(wk.verify.join(" / ")):""}</span></div>
+    <div class="focus-list">${wk?wk.focus.map(f=>`<span class="focus-chip">${esc(f)}</span>`).join(""):""}</div>
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" style="width:${p.total?Math.round(p.done/p.total*100):0}%"></div></div>
+      <div class="progress-meta"><span>已学 ${p.done} / ${p.total} 课</span><span>待复习 ${p.review} 课</span></div>
+    </div>
+    ${reviews.length?`<h3>今日复习</h3><div class="review-list">${reviews.map(r=>`<a class="review-link" href="#/course/${r.course.id}/${r.lesson.id}"><span><b>${esc(r.course.name)} · ${esc(r.lesson.title)}</b><br><small>${esc(r.lesson.chapters)}</small></span><span class="due">到期</span></a>`).join("")}</div>`:""}
+    <div style="margin-top:14px"><a class="btn" href="#/plan">查看 16 周计划</a></div>
+  </div>
+  <div class="section"><h2>课程与教材</h2><span class="note">官方课程 + 自学与先修模块</span></div>
+  <div class="course-list">${rows}</div>`;
+}
+
+function renderPlanHTML(){
+  const cw=activeWeek();
+  const wk=plan.weeks[cw-1]||plan.weeks[0];
+  const tabs=plan.weeks.map(w=>`<button data-week="${w.week}" class="${w.week===cw?"active":""}">第 ${w.week} 周</button>`).join("");
+  return `
+  <section class="hero">
+    <div class="kicker">16 周加速计划</div>
+    <h1>精修官方 6 门 + 大一下先修</h1>
+    <p>前 12 周以本学期课程为主线，第 8 周为期中、第 15 周为期末；第 11-16 周同步启动大一下与转 AI 先修。导入真实课表后，周视图会切换为按节次渲染。</p>
+  </section>
+  <div class="week-tabs" id="weekTabs">${tabs}</div>
+  <div class="panel" id="weekPanel">
+    <div class="section" style="margin-top:0"><h2>第 ${wk.week} 周 · ${esc(wk.theme)}</h2><span class="note">${cw===wk.week?"当前周":""}</span></div>
+    <h3>本周主攻</h3>
+    <div class="focus-list">${wk.focus.map(f=>`<span class="focus-chip">${esc(f)}</span>`).join("")}</div>
+    <h3>里程碑</h3>
+    <ul class="check-list">${wk.milestones.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>
+    <h3>验收标准</h3>
+    <ul class="check-list">${wk.verify.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>
+    <h3>先修 / 转专业</h3>
+    <p>${esc(wk.prep)}</p>
+  </div>
+  <div class="panel">
+    <h3>每日时间槽</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>时间</th><th>任务</th><th>目的</th></tr></thead>
+      <tbody>${plan.daily.map(d=>`<tr><td>${esc(d.time)}</td><td>${esc(d.task)}</td><td>${esc(d.purpose)}</td></tr>`).join("")}</tbody>
+    </table></div>
+  </div>
+  <div class="panel">
+    <h3>真实课表导入</h3>
+    <p>支持 CSV（列：星期,节次,开始时间,结束时间,课程,教室）或同结构 JSON。导入数据只保存在本机浏览器。</p>
+    <div class="drop">
+      <label class="btn" for="ttFile">选择 CSV / JSON</label>
+      <input type="file" id="ttFile" accept=".csv,.json" style="display:none">
+    </div>
+    <div style="margin:12px 0"><button class="btn" id="ttClear">清除已导入课表</button></div>
+    <div id="ttArea">${renderTimetableHTML()}</div>
+  </div>`;
+}
+
+function renderTimetableHTML(){
+  const tt=state.timetable;
+  if(!tt || !tt.length) return `<div class="empty">尚未导入课表，当前使用上方默认时间槽。</div>`;
+  const slots=Array.from(new Set(tt.map(t=>String(t.period||"1")))).sort((a,b)=>Number(a)-Number(b));
+  const rows=slots.map(p=>{
+    const cells=DAYS.map((day,di)=>{
+      const items=tt.filter(t=>Number(t.day)===di+1 && String(t.period)===String(p));
+      return `<div class="tt-cell">${items.map(i=>`<div class="tt-course">${esc(i.course||"")}</div><div>${esc(i.start||"")}-${esc(i.end||"")}</div><div>${esc(i.room||"")}</div>`).join("")}</div>`;
+    }).join("");
+    return `<div class="tt-head">第 ${p} 节</div>${cells}`;
+  }).join("");
+  return `<div class="tt-grid"><div></div>${DAYS.map(d=>`<div class="tt-head">${d}</div>`).join("")}${rows}</div>`;
+}
+
+function renderBooksHTML(){
+  const rows=books.map(b=>{
+    const c=data.find(x=>x.id===b.course);
+    return `<tr><td>${esc(b.title)}<br><span style="color:var(--muted);font-size:.82rem">${esc(b.author)} · ${esc(b.edition)}</span></td><td>${esc(b.pages)}</td><td>${esc(b.chapters)}</td><td><a href="#/course/${b.course}">${esc(c?c.name:b.course)}</a></td><td><span class="tag tag-blue">${esc(b.role)}</span></td><td>${esc(b.fall)}</td><td>${esc(b.spring)}</td></tr>`;
+  }).join("");
+  return `
+  <section class="hero">
+    <div class="kicker">教材地图</div>
+    <h1>6 本官方教材，一张地图</h1>
+    <p>每本教材的章节、学期归属与课程页一一对应；合并版工程力学作为章节对照备用源。</p>
+  </section>
+  <div class="panel"><div class="table-wrap"><table>
+    <thead><tr><th>教材</th><th>页数</th><th>章节</th><th>课程</th><th>角色</th><th>本学期</th><th>先修</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table></div></div>`;
+}
+
+function renderCompareHTML(){
+  const diffRows=compare.differences.map(d=>`<tr><td>${esc(d.dim)}</td><td>${esc(d.tongji)}</td><td>${esc(d.stewart)}</td><td>${esc(d.poole)}</td></tr>`).join("");
+  const termRows=compare.terms.map(t=>`<tr><td>${esc(t.en)}</td><td>${esc(t.zh)}</td><td>${esc(t.note)}</td></tr>`).join("");
+  return `
+  <section class="hero">
+    <div class="kicker">中英教材对比</div>
+    <h1>同济高数 vs Stewart vs Poole</h1>
+    <p>同济《高等数学（上册）》第八版、Stewart《Essential Calculus 2e》与 Poole《Linear Algebra: A Modern Introduction 4e》的异同与配合方法。</p>
+  </section>
+  <div class="panel">
+    <h3>相同之处</h3>
+    <ul class="check-list">${compare.similarities.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
+  </div>
+  <div class="section"><h2>结构差异</h2><span class="note">按教学理念、章节、习题与工具对比</span></div>
+  <div class="panel"><div class="table-wrap"><table class="compare-table">
+    <thead><tr><th>维度</th><th>同济 高数上册</th><th>Stewart Essential Calculus</th><th>Poole Linear Algebra</th></tr></thead>
+    <tbody>${diffRows}</tbody>
+  </table></div></div>
+  <div class="section"><h2>中英术语对照</h2><span class="note">英文教材听课 + 中文教材刷题</span></div>
+  <div class="panel"><div class="table-wrap"><table class="term-table">
+    <thead><tr><th>English</th><th>中文</th><th>说明</th></tr></thead>
+    <tbody>${termRows}</tbody>
+  </table></div></div>`;
+}
+
+function renderPdfLibraryHTML(){
+  const rows=data.map(c=>`
+    <section class="pdf-lib-course" id="pdf-${c.id}">
+      <h3>${esc(c.name)}</h3>
+      <div class="sub">${esc(c.enName)} · ${c.lessons.length} 份 PDF</div>
+      <div class="pdf-grid">${c.lessons.map((l,i)=>{
+        const key=lessonKey(c.id,l.id);
+        const prog=state.progress[key]||{};
+        const status=prog.status==="done"?"已学":prog.status==="review"?"待复习":"未开始";
+        return `
+        <a class="pdf-link" href="pdfs/${c.id}/${l.id}.pdf" target="_blank" rel="noopener">
+          <span><b>${i+1}. ${esc(l.title)}</b><small>${esc(l.chapters)} · ${status}</small></span>
+          <span class="file-badge">PDF</span>
+        </a>`;
+      }).join("")}</div>
+      <div class="practice-list" style="margin-top:12px">${[...(c.online||[]),...c.practice].map(p=>`<a class="practice-link" href="${esc(p.url)}" target="_blank" rel="noopener"><span>${esc(p.title)}<br><span class="note">${esc(p.note)}</span></span><span>↗</span></a>`).join("")}</div>
+    </section>`).join("");
+  return `
+  <section class="hero">
+    <div class="kicker">PDF 资料库</div>
+    <h1>每课一份，下载或打印后离线做题</h1>
+    <p>所有 PDF 都由课程数据生成：核心知识点、易错点、高频考点、随堂练习、参考答案与解析、在线题库链接。点击即可打开或打印。</p>
+  </section>
+  ${rows}`;
+}
+
+function renderCourseHTML(c){
+  const lessons=c.lessons.map((l,li)=>{
+    const key=lessonKey(c.id,l.id);
+    const prog=state.progress[key]||{};
+    const statusTag=prog.status==="done"
+      ? `<span class="status-chip done">已学</span>`
+      : prog.status==="review"
+        ? `<span class="status-chip review">待复习</span>`
+        : `<span class="status-chip">未开始</span>`;
+    const note=state.notes[key]||"";
+    const firstVideo=(l.videos||[])[0];
+    const ex=(window.SCAI_LESSON_EXTRA&&window.SCAI_LESSON_EXTRA[l.id])||{};
+    const cw=ex.courseware||{};
+    const mp=ex.mindmapPage||(li+1);
+    return `
+      <details class="lesson" data-li="${li}">
+        <summary><span class="ltitle">${li+1}. ${esc(l.title)} <span class="tag tag-blue">${esc(l.en)}</span></span><span class="lmeta">${esc(l.chapters)} · ${esc(l.week)}</span></summary>
+        <div class="lesson-body">
+          <p>${esc(l.focus)}</p>
+          <div class="concept-card">
+            <b>概念拆解 · 本课在回答：</b>${esc(l.focus)}
+            <div class="concept-flow"><span>① 直觉视频</span><span>② 教材定义</span><span>③ 例题拆解</span><span>④ 独立做题</span><span>⑤ 错题复述</span></div>
+            ${firstVideo?`<div class="concept-watch">建议先看：<a href="${esc(firstVideo.url)}" target="_blank" rel="noopener">${esc(firstVideo.title)}</a>（${esc(firstVideo.source)}）</div>`:""}
+          </div>
+          <div style="margin:12px 0"><a class="btn" href="pdfs/${c.id}/${l.id}.pdf" target="_blank" rel="noopener">打开本课 PDF 讲义</a></div>
+          <div class="lesson-extra-links">
+            ${cw.url?`<a class="btn" href="${esc(cw.url)}" target="_blank" rel="noopener">本课在线课件</a>`:""}
+            <a class="btn" href="mindmaps/思维导图预览.pdf#page=${mp}" target="_blank" rel="noopener">本课思维导图</a>
+          </div>
+          <div class="lesson-tools">
+            <button class="btn" type="button" data-progress="done" data-key="${key}">标记已学</button>
+            <button class="btn" type="button" data-progress="review" data-key="${key}">加入复习</button>
+            <button class="btn" type="button" data-progress="clear" data-key="${key}">未开始</button>
+            ${statusTag}
+          </div>
+          <div class="lesson-grid">
+            <div class="lesson-col points"><h4>核心知识点</h4><ul>${l.points.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>
+            <div class="lesson-col pitfalls"><h4>易错点</h4><ul>${l.pitfalls.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>
+            <div class="lesson-col exams"><h4>高频考点</h4><ul>${l.exams.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>
+          </div>
+          <h4 style="margin:16px 0 8px">匹配视频</h4>
+          <div class="video-list">${(l.videos||[]).map(v=>`<a class="video-link" href="${esc(v.url)}" target="_blank" rel="noopener"><span>${esc(v.title)}</span><span class="src">${esc(v.source)}</span></a>`).join("")||`<div class="empty">暂无</div>`}</div>
+          <div class="lesson-notes">
+            <h4>学习笔记</h4>
+            <textarea data-note-key="${key}" placeholder="记录本课重点、疑问、错题心得...">${esc(note)}</textarea>
+          </div>
+        </div>
+      </details>`;
+  }).join("");
+  const pdfGrid=`<div class="pdf-grid">${c.lessons.map((l,i)=>`
+    <a class="pdf-link" href="pdfs/${c.id}/${l.id}.pdf" target="_blank" rel="noopener">
+      <span><b>${i+1}. ${esc(l.title)}</b><small>${esc(l.chapters)}</small></span>
+      <span class="file-badge">PDF</span>
+    </a>`).join("")}</div>`;
+  const practiceLinks=[...(c.online||[]),...c.practice];
+  return `
+  <section class="hero">
+    <div class="kicker">${esc(c.code)} · ${esc(c.semester==="fall"?"本学期":"自学 / 先修")}</div>
+    <h1>${esc(c.name)}</h1>
+    <p>${esc(c.enName)} · ${esc(c.textbook)} · ${esc(c.pages)} 页</p>
+    <p>${esc(c.summary)}</p>
+    <div class="focus-list">${c.goals.map(g=>`<span class="focus-chip">${esc(g)}</span>`).join("")}</div>
+  </section>
+  <div class="section"><h2>知识地图</h2><span class="note">${esc(c.chapters)}</span></div>
+  <div class="section"><h2>课程配套视频库</h2><span class="note">先看直觉视频，再回教材做计算，理解效率更高</span></div>
+  <div class="video-list">${(c.extraVideos||[]).map(v=>`<a class="video-link" href="${esc(v.url)}" target="_blank" rel="noopener"><span>${esc(v.title)}<br><small class="note">${esc(v.note||"")}</small></span><span class="src">${esc(v.source)}</span></a>`).join("")}</div>
+  ${lessons}
+  <div class="section"><h2>PDF 讲义与练习</h2><span class="note">每课 PDF 内含知识点、易错点、高频考点、随堂练习、答案解析与在线题库</span></div>
+  ${pdfGrid}
+  <div class="section"><h2>在线练习与名校题库</h2><span class="note">英文原版 + 国内名校资源 + 按主题在线题库</span></div>
+  <div class="practice-list">${practiceLinks.map(p=>`<a class="practice-link" href="${esc(p.url)}" target="_blank" rel="noopener"><span>${esc(p.title)}<br><span class="note">${esc(p.note)}</span></span><span>↗</span></a>`).join("")}</div>
+  <div class="section"><h2>课件与 AI 上下文</h2><span class="note">支持 txt / md / pdf / docx / pptx</span></div>
+  <div class="panel">
+    <div class="drop">
+      <strong>上传本课程课件</strong>
+      <small>解析后保存在本机浏览器；AI 助手会参考课件内容回答问题并调整计划。</small>
+      <div style="margin-top:12px"><label class="btn" for="file-${c.id}">选择文件</label><input type="file" id="file-${c.id}" accept=".txt,.md,.pdf,.docx,.pptx" multiple style="display:none"></div>
+    </div>
+    <ul class="file-list" id="cw-list-${c.id}"></ul>
+  </div>`;
+}
+
+function bindCourse(c){
+  $$("[data-progress]",$("#app")).forEach(btn=>btn.addEventListener("click",()=>{
+    const key=btn.dataset.key;
+    const status=btn.dataset.progress;
+    if(status==="clear") delete state.progress[key];
+    else state.progress[key]={status,ts:Date.now(),due:status==="review"?Date.now()+3*86400000:null};
+    save();
+    const det=btn.closest("details");
+    if(det){
+      const chip=det.querySelector(".status-chip");
+      if(chip){
+        chip.className="status-chip"+(status==="clear"?"":status==="done"?" done":" review");
+        chip.textContent=status==="clear"?"未开始":status==="done"?"已学":"待复习";
+      }
+    }
+    toast(status==="clear"?"已重置为本课未开始":status==="done"?"已标记为本课已学":"已加入复习队列（3 天后到期）");
+  }));
+  $$("textarea[data-note-key]",$("#app")).forEach(ta=>ta.addEventListener("input",()=>{
+    state.notes[ta.dataset.noteKey]=ta.value;
+    save();
+  }));
+  const input=$(`#file-${c.id}`);
+  if(input) input.addEventListener("change",()=>handleFiles(input.files,c.id));
+  renderCoursewareList(c.id);
+}
+
+function renderCoursewareList(courseId){
+  const el=document.getElementById("cw-list-"+courseId);
+  if(!el) return;
+  const list=state.courseware[courseId]||[];
+  el.innerHTML=list.map((f,i)=>`
+    <li><span><span class="fname">${esc(f.name)}</span> <span class="fmeta">${f.text.length} 字符 · ${new Date(f.ts).toLocaleDateString()}</span></span><button data-cw-del="${courseId}" data-cw-i="${i}">删除</button></li>
+  `).join("")||`<li class="empty">还没有课件，上传后 AI 将自动参考。</li>`;
+  $$("[data-cw-del]",el).forEach(btn=>btn.addEventListener("click",()=>{
+    const cid=btn.dataset.cwDel;
+    const idx=Number(btn.dataset.cwI);
+    const arr=state.courseware[cid]||[];
+    arr.splice(idx,1);
+    state.courseware[cid]=arr;
+    save();
+    renderCoursewareList(cid);
+    toast("已删除课件");
+  }));
+}
+
+function ext(name){ const i=name.lastIndexOf("."); return i>=0?name.slice(i+1).toLowerCase():""; }
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    const s=document.createElement("script");
+    s.src=src;
+    s.onload=()=>res();
+    s.onerror=()=>rej(new Error("CDN 加载失败，请联网后重试，或把课件转存为 .txt/.md"));
+    document.head.appendChild(s);
+  });
+}
+async function parseFile(file){
+  const e=ext(file.name);
+  if(["txt","md","markdown"].includes(e)) return await file.text();
+  const buf=await file.arrayBuffer();
+  if(e==="pdf") return await parsePdf(buf);
+  if(e==="docx") return await parseDocx(buf);
+  if(e==="pptx") return await parsePptx(buf);
+  throw new Error("不支持的文件类型");
+}
+async function parsePdf(buf){
+  if(!window.pdfjsLib){
+    await loadScript("https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js");
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+  }
+  const pdf=await window.pdfjsLib.getDocument({data:buf}).promise;
+  const pages=[];
+  const n=Math.min(pdf.numPages,20);
+  for(let i=1;i<=n;i++){
+    const pg=await pdf.getPage(i);
+    const tc=await pg.getTextContent();
+    pages.push(tc.items.map(it=>it.str||"").join(" "));
+  }
+  return pages.join("\n");
+}
+async function parseDocx(buf){
+  if(!window.mammoth) await loadScript("https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js");
+  const res=await window.mammoth.extractRawText({arrayBuffer:buf});
+  return res.value||"";
+}
+async function parsePptx(buf){
+  if(!window.JSZip) await loadScript("https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js");
+  const zip=await window.JSZip.loadAsync(buf);
+  const names=Object.keys(zip.files).filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).sort((a,b)=>Number(a.match(/\d+/)[0])-Number(b.match(/\d+/)[0]));
+  let out="";
+  for(const n of names){
+    const xml=await zip.file(n).async("string");
+    const doc=new DOMParser().parseFromString(xml,"application/xml");
+    out+=(doc.documentElement.textContent||"").replace(/\s+/g," ")+"\n";
+  }
+  return out;
+}
+async function handleFiles(files,courseId){
+  const arr=Array.from(files||[]);
+  for(const file of arr){
+    try{
+      toast("正在解析 " + file.name + " ...");
+      const text=await parseFile(file);
+      const list=state.courseware[courseId]||[];
+      list.unshift({name:file.name,size:file.size,ts:Date.now(),text:text.slice(0,30000)});
+      state.courseware[courseId]=list.slice(0,6);
+      save();
+      renderCoursewareList(courseId);
+      toast("已解析 " + file.name);
+    }catch(err){
+      console.error(err);
+      toast("解析失败：" + file.name + " · " + err.message);
+    }
+  }
+  const input=document.getElementById("file-"+courseId);
+  if(input) input.value="";
+}
+
+function getLLMConfig(){
+  const base={baseURL:"https://api.deepseek.com/v1",model:"deepseek-chat",apiKey:""};
+  if(state.llm && state.llm.apiKey) return Object.assign({},base,state.llm);
+  if(window.LLM_CONFIG && window.LLM_CONFIG.apiKey) return Object.assign({},base,window.LLM_CONFIG);
+  return base;
+}
+function buildSystemPrompt(courseId){
+  const c=data.find(x=>x.id===courseId);
+  let s="你是 SCAI ME1 学习助手。你的任务：结合课程、课件和 16 周计划，用中文给出准确、可执行的回答；公式用清晰文本形式表达。";
+  if(c){
+    s+="\n当前课程："+c.name+"（"+c.enName+"）";
+    s+="\n课程摘要："+c.summary;
+    s+="\n章节："+c.chapters;
+    s+="\n知识点概要："+c.lessons.slice(0,4).map(l=>l.title+"："+l.points.join("；")).join("\n");
+  }
+  const cw=state.courseware[courseId]||[];
+  if(cw.length) s+="\n\n已上传课件摘要：\n"+cw.slice(0,3).map(f=>"【"+f.name+"】"+f.text.slice(0,1200)).join("\n");
+  else s+="\n\n当前课程尚未上传课件。";
+  return s;
+}
+async function askAI(text,courseId){
+  const cfg=getLLMConfig();
+  if(!cfg.apiKey) return offlineAnswer(text,courseId);
+  const messages=[{role:"system",content:buildSystemPrompt(courseId)},{role:"user",content:text}];
+  try{
+    const res=await fetch(cfg.baseURL.replace(/\/+$/,"")+"/chat/completions",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Authorization":"Bearer "+cfg.apiKey},
+      body:JSON.stringify({model:cfg.model||"deepseek-chat",messages:messages,max_tokens:900,temperature:0.3})
+    });
+    if(!res.ok){
+      const t=await res.text().catch(()=>"");
+      throw new Error("HTTP "+res.status+" "+t.slice(0,140));
+    }
+    const j=await res.json();
+    const out=j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content;
+    if(!out) throw new Error("空响应");
+    return out;
+  }catch(err){
+    console.warn(err);
+    return offlineAnswer(text,courseId)+"\n\n[在线 AI 请求失败："+err.message+"，已切换离线模式]";
+  }
+}
+function offlineAnswer(text,courseId){
+  const t=(text||"").toLowerCase();
+  const c=data.find(x=>x.id===courseId);
+  if(/调整|计划|课件/.test(t) && c) return adjustPlanOffline(c);
+  if(c){
+    const lesson=c.lessons.find(l=>{
+      const hay=(l.title+l.en+l.points.join("")).toLowerCase();
+      const words=t.split(/\s+/).filter(w=>w.length>1);
+      return words.some(w=>hay.includes(w));
+    });
+    if(lesson){
+      return "离线模式命中："+lesson.title+"。\n核心知识点：\n"+lesson.points.map(x=>"· "+x).join("\n")+"\n易错点：\n"+lesson.pitfalls.map(x=>"· "+x).join("\n")+"\n高频考点：\n"+lesson.exams.map(x=>"· "+x).join("\n");
+    }
+    return "离线模式：当前课程为"+c.name+"。建议先过一遍本周知识点，再完成 PDF 练习并对照解析订正。若想让回答更精准，可在设置中填入 API Key，或在课件区上传老师课件。";
+  }
+  return "离线模式：你可以问我某门课的具体知识点，例如“极限怎么求”“特征值怎么算”。配置 API Key 后可获得更深入的个性化回答。";
+}
+function adjustPlanOffline(c){
+  const cw=state.courseware[c.id]||[];
+  const all=cw.map(f=>f.text).join("\n");
+  const count=(re)=>(all.match(re)||[]).length;
+  const hits=[];
+  if(count(/期中|midterm/gi)) hits.push("检测到“期中”相关内容，建议第 7 周前完成本章错题清零并安排一次模考。");
+  if(count(/期末|final|exam/gi)) hits.push("检测到“期末/考试”相关内容，建议把本章加入第 12-15 周高频考点清单。");
+  if(count(/实验|lab|report|报告/gi)) hits.push("检测到实验/报告任务，建议提前两周起草英文报告并安排小组分工。");
+  if(count(/重点|考点|关键/gi)) hits.push("课件中出现“重点/考点”字样，建议整理为章节错题卡并让 AI 生成自测题。");
+  if(!hits.length) hits.push("课件中暂未识别到考试或报告信号；建议按 16 周计划推进，并在每章结束后完成 PDF 练习并订正。");
+  let out="基于当前课件给出的计划调整：\n";
+  out+=hits.map(x=>"· "+x).join("\n");
+  out+="\n当前课件："+(cw.map(f=>f.name).join("、")||"无");
+  out+="\n建议：把课件例题作为第一轮练习，再把教材习题按难度分层完成。";
+  return out;
+}
+
+function chatCourseName(){ const c=data.find(x=>x.id===state.currentCourse); return c?c.name:"未选择课程"; }
+function renderChat(){
+  const box=$("#chatMessages");
+  box.innerHTML=state.chat.map(m=>`<div class="msg ${m.role}"><span class="mhead">${m.role==="user"?"你":"AI"}</span>${esc(m.content)}</div>`).join("")||`<div class="empty">问任何课程问题，或点击“根据课件调整计划”。</div>`;
+  box.scrollTop=box.scrollHeight;
+  $("#chatCourse").textContent=chatCourseName();
+}
+function openChat(courseId){
+  if(courseId) state.currentCourse=courseId;
+  $("#chatPanel").classList.add("open");
+  renderChat();
+  setTimeout(()=>$("#chatInput").focus(),60);
+}
+async function sendChat(text){
+  if(!text){ $("#chatInput").focus(); return; }
+  state.chat.push({role:"user",content:text});
+  state.chat.push({role:"assistant",content:"思考中..."});
+  renderChat();
+  const answer=await askAI(text,state.currentCourse);
+  state.chat[state.chat.length-1]={role:"assistant",content:answer};
+  renderChat();
+}
+function bindChat(){
+  $("#aiBtn").addEventListener("click",()=>openChat(null));
+  $("#chatClose").addEventListener("click",()=>$("#chatPanel").classList.remove("open"));
+  $("#chatForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const input=$("#chatInput");
+    const text=input.value.trim();
+    input.value="";
+    sendChat(text);
+  });
+  $("#chatPlan").addEventListener("click",()=>{
+    const c=data.find(x=>x.id===state.currentCourse);
+    if(!c){ toast("请先进入某门课程页再使用此功能"); openChat(null); return; }
+    sendChat("请根据当前课件调整我的学习计划。");
+  });
+}
+
+function renderSettings(){
+  const cfg=getLLMConfig();
+  $("#cfgBase").value=cfg.baseURL||"";
+  $("#cfgModel").value=cfg.model||"";
+  $("#cfgKey").value=cfg.apiKey||"";
+  const sel=$("#cfgCourse");
+  sel.innerHTML=data.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("");
+  sel.value=state.currentCourse||"calculus";
+}
+function exportStudyData(){
+  const payload={
+    app:"scai-me1",
+    version:1,
+    exportedAt:new Date().toISOString(),
+    theme:state.theme,
+    quiz:state.quiz,
+    progress:state.progress,
+    notes:state.notes,
+    courseware:state.courseware,
+    week:state.week,
+    timetable:state.timetable,
+    chat:state.chat
+  };
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="scai-study-backup-"+new Date().toISOString().slice(0,10)+".json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(a.href);
+  toast("学习数据已导出（不含 API Key）");
+}
+async function importStudyData(file){
+  try{
+    const j=JSON.parse(await file.text());
+    if(!j||typeof j!=="object"||!j.progress) throw new Error("文件格式不是 SCAI 学习数据备份");
+    state.theme=j.theme||state.theme;
+    state.quiz=j.quiz||{};
+    state.progress=j.progress||{};
+    state.notes=j.notes||{};
+    state.courseware=j.courseware||{};
+    state.week=j.week||null;
+    state.timetable=j.timetable||null;
+    state.chat=Array.isArray(j.chat)?j.chat:[];
+    save();
+    applyTheme();
+    render();
+    toast("学习数据已导入");
+  }catch(err){
+    console.error(err);
+    toast("导入失败："+err.message);
+  }
+}
+function bindSettings(){
+  $("#settingsBtn").addEventListener("click",()=>{ renderSettings(); $("#settingsModal").classList.add("open"); });
+  $("#cfgClose").addEventListener("click",()=>$("#settingsModal").classList.remove("open"));
+  $("#cfgSave").addEventListener("click",()=>{
+    state.llm={
+      baseURL:$("#cfgBase").value.trim()||"https://api.deepseek.com/v1",
+      model:$("#cfgModel").value.trim()||"deepseek-chat",
+      apiKey:$("#cfgKey").value.trim()
+    };
+    if(!state.llm.apiKey && window.LLM_CONFIG) window.LLM_CONFIG.apiKey="";
+    state.currentCourse=$("#cfgCourse").value||state.currentCourse;
+    save();
+    toast("配置已保存");
+    $("#settingsModal").classList.remove("open");
+  });
+  $("#cfgExport").addEventListener("click",exportStudyData);
+  const importFile=$("#cfgImportFile");
+  if(importFile) importFile.addEventListener("change",()=>{
+    if(importFile.files[0]) importStudyData(importFile.files[0]);
+    importFile.value="";
+  });
+  $("#cfgClear").addEventListener("click",()=>{
+    if(!confirm("确定清除本地学习数据与 AI 配置？")) return;
+    state.quiz={}; state.progress={}; state.notes={}; state.courseware={}; state.llm=null; state.chat=[]; state.timetable=null; state.week=null;
+    ["scai_quiz_scores","scai_progress","scai_notes","scai_uploaded_courseware","scai_llm_config","scai_plan_week","scai_timetable"].forEach(k=>LS.del(k));
+    if(window.LLM_CONFIG) window.LLM_CONFIG.apiKey="";
+    render();
+    toast("本地数据已清除");
+  });
+  $("#settingsModal").addEventListener("click",e=>{ if(e.target.id==="settingsModal") $("#settingsModal").classList.remove("open"); });
+}
+
+function parseCsvTimetable(text){
+  const lines=text.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  if(!lines.length) return [];
+  const head=lines[0].split(",").map(s=>s.trim().toLowerCase());
+  const idx={
+    day:head.findIndex(h=>/星期|day|weekday/.test(h)),
+    period:head.findIndex(h=>/节|period/.test(h)),
+    start:head.findIndex(h=>/开始|start/.test(h)),
+    end:head.findIndex(h=>/结束|end/.test(h)),
+    course:head.findIndex(h=>/课程|course/.test(h)),
+    room:head.findIndex(h=>/教室|room/.test(h))
+  };
+  return lines.slice(1).map(line=>{
+    const c=line.split(",").map(s=>s.trim());
+    return {
+      day:idx.day>=0?c[idx.day]||"":"",
+      period:idx.period>=0?c[idx.period]||"1":"1",
+      start:idx.start>=0?c[idx.start]||"":"",
+      end:idx.end>=0?c[idx.end]||"":"",
+      course:idx.course>=0?c[idx.course]||"":"",
+      room:idx.room>=0?c[idx.room]||"":""
+    };
+  }).filter(r=>r.course);
+}
+function normalizeTtRow(r){
+  let day=String(r.day||r.weekday||"");
+  if(/周一|星期一|mon/i.test(day)) day=1;
+  else if(/周二|星期二|tue/i.test(day)) day=2;
+  else if(/周三|星期三|wed/i.test(day)) day=3;
+  else if(/周四|星期四|thu/i.test(day)) day=4;
+  else if(/周五|星期五|fri/i.test(day)) day=5;
+  else if(/周六|星期六|sat/i.test(day)) day=6;
+  else if(/周日|星期日|sun/i.test(day)) day=7;
+  else day=Number(day)||1;
+  return {day,period:String(r.period||"1"),start:r.start||"",end:r.end||"",course:r.course||"",room:r.room||""};
+}
+async function importTimetable(file){
+  try{
+    const text=await file.text();
+    let rows=[];
+    if(/\.json$/i.test(file.name)){
+      const j=JSON.parse(text);
+      rows=Array.isArray(j)?j:(j.items||j.courses||[]);
+    }else{
+      rows=parseCsvTimetable(text);
+    }
+    if(!rows.length) throw new Error("未解析到有效行");
+    state.timetable=rows.map(normalizeTtRow);
+    save();
+    render();
+    toast("课表已导入 "+rows.length+" 条");
+  }catch(err){
+    console.error(err);
+    toast("课表导入失败："+err.message);
+  }
+}
+function bindPlan(){
+  $$("#weekTabs button").forEach(b=>b.addEventListener("click",()=>{
+    state.week=Number(b.dataset.week);
+    save();
+    render();
+  }));
+  const tt=$("#ttFile");
+  if(tt) tt.addEventListener("change",()=>importTimetable(tt.files[0]));
+  const clear=$("#ttClear");
+  if(clear) clear.addEventListener("click",()=>{
+    state.timetable=null;
+    save();
+    render();
+    toast("课表已清除");
+  });
+}
+
+function bindTheme(){
+  $("#themeBtn").addEventListener("click",()=>{
+    state.theme=state.theme==="dark"?"light":"dark";
+    applyTheme();
+  });
+}
+function init(){
+  bindTheme();
+  bindChat();
+  bindSettings();
+  bindSearch();
+  if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+    navigator.serviceWorker.register("sw.js").catch(err=>console.warn("SW register failed",err));
+  }
+  window.addEventListener("hashchange",render);
+  render();
+}
+init();
+})();
+</script>
+</body>
+</html>

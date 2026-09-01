@@ -1,0 +1,429 @@
+[
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-1",
+    "title": "函数与极限",
+    "file": "pdfs/calculus/cal-1.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-2",
+    "title": "导数与微分",
+    "file": "pdfs/calculus/cal-2.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-3",
+    "title": "导数的应用",
+    "file": "pdfs/calculus/cal-3.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-4",
+    "title": "定积分与微积分基本定理",
+    "file": "pdfs/calculus/cal-4.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-5",
+    "title": "反函数、指数对数与洛必达法则",
+    "file": "pdfs/calculus/cal-5.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-6",
+    "title": "积分技巧",
+    "file": "pdfs/calculus/cal-6.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-7",
+    "title": "积分的应用与微分方程",
+    "file": "pdfs/calculus/cal-7.pdf"
+  },
+  {
+    "course": "calculus",
+    "courseName": "数学建模 1 · 微积分",
+    "lesson": "cal-8",
+    "title": "级数与多元微积分先修",
+    "file": "pdfs/calculus/cal-8.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-1",
+    "title": "向量与几何",
+    "file": "pdfs/linear-algebra/la-1.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-2",
+    "title": "线性方程组与消元法",
+    "file": "pdfs/linear-algebra/la-2.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-3",
+    "title": "矩阵与线性变换",
+    "file": "pdfs/linear-algebra/la-3.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-4",
+    "title": "行列式、特征值与特征向量",
+    "file": "pdfs/linear-algebra/la-4.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-5",
+    "title": "正交性与最小二乘",
+    "file": "pdfs/linear-algebra/la-5.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-6",
+    "title": "向量空间与线性变换",
+    "file": "pdfs/linear-algebra/la-6.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-7",
+    "title": "距离、近似与 SVD",
+    "file": "pdfs/linear-algebra/la-7.pdf"
+  },
+  {
+    "course": "linear-algebra",
+    "courseName": "矩阵与线性代数",
+    "lesson": "la-8",
+    "title": "编码理论拓展",
+    "file": "pdfs/linear-algebra/la-8.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-1",
+    "title": "测量与一维运动",
+    "file": "pdfs/physics/phy-1.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-2",
+    "title": "矢量与二维运动",
+    "file": "pdfs/physics/phy-2.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-3",
+    "title": "牛顿定律与摩擦力",
+    "file": "pdfs/physics/phy-3.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-4",
+    "title": "功、能量与功率",
+    "file": "pdfs/physics/phy-4.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-5",
+    "title": "动量、质心与碰撞",
+    "file": "pdfs/physics/phy-5.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-6",
+    "title": "转动与角动量",
+    "file": "pdfs/physics/phy-6.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-7",
+    "title": "平衡、引力与流体",
+    "file": "pdfs/physics/phy-7.pdf"
+  },
+  {
+    "course": "physics",
+    "courseName": "工程物理 1",
+    "lesson": "phy-8",
+    "title": "振动、波动与热学",
+    "file": "pdfs/physics/phy-8.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-1",
+    "title": "物质、原子与周期表",
+    "file": "pdfs/chemistry/chem-1.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-2",
+    "title": "量子理论与电子结构",
+    "file": "pdfs/chemistry/chem-2.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-3",
+    "title": "化学键与分子几何",
+    "file": "pdfs/chemistry/chem-3.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-4",
+    "title": "化学反应与化学计量",
+    "file": "pdfs/chemistry/chem-4.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-5",
+    "title": "能量变化与热化学",
+    "file": "pdfs/chemistry/chem-5.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-6",
+    "title": "气体、液体、固体与溶液",
+    "file": "pdfs/chemistry/chem-6.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-7",
+    "title": "动力学、热力学与平衡先修",
+    "file": "pdfs/chemistry/chem-7.pdf"
+  },
+  {
+    "course": "chemistry",
+    "courseName": "工程化学 1",
+    "lesson": "chem-8",
+    "title": "电化学、有机与现代材料先修",
+    "file": "pdfs/chemistry/chem-8.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-1",
+    "title": "静力学基础与力系",
+    "file": "pdfs/mechanics/mech-1.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-2",
+    "title": "平衡与自由体图",
+    "file": "pdfs/mechanics/mech-2.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-3",
+    "title": "桁架、框架与机器",
+    "file": "pdfs/mechanics/mech-3.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-4",
+    "title": "分布力、形心与惯性矩",
+    "file": "pdfs/mechanics/mech-4.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-5",
+    "title": "摩擦与虚功",
+    "file": "pdfs/mechanics/mech-5.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-6",
+    "title": "质点运动学",
+    "file": "pdfs/mechanics/mech-6.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-7",
+    "title": "质点动力学",
+    "file": "pdfs/mechanics/mech-7.pdf"
+  },
+  {
+    "course": "mechanics",
+    "courseName": "工程力学",
+    "lesson": "mech-8",
+    "title": "刚体动力学与振动先修",
+    "file": "pdfs/mechanics/mech-8.pdf"
+  },
+  {
+    "course": "general-ed",
+    "courseName": "通识课",
+    "lesson": "gen-1",
+    "title": "思想道德与法治",
+    "file": "pdfs/general-ed/gen-1.pdf"
+  },
+  {
+    "course": "general-ed",
+    "courseName": "通识课",
+    "lesson": "gen-2",
+    "title": "大学生心理健康",
+    "file": "pdfs/general-ed/gen-2.pdf"
+  },
+  {
+    "course": "general-ed",
+    "courseName": "通识课",
+    "lesson": "gen-3",
+    "title": "体育与体测",
+    "file": "pdfs/general-ed/gen-3.pdf"
+  },
+  {
+    "course": "general-ed",
+    "courseName": "通识课",
+    "lesson": "gen-4",
+    "title": "形势与政策",
+    "file": "pdfs/general-ed/gen-4.pdf"
+  },
+  {
+    "course": "general-ed",
+    "courseName": "通识课",
+    "lesson": "gen-5",
+    "title": "军事理论与国家安全",
+    "file": "pdfs/general-ed/gen-5.pdf"
+  },
+  {
+    "course": "english",
+    "courseName": "学术英语与雅思",
+    "lesson": "eng-1",
+    "title": "学术词汇与阅读",
+    "file": "pdfs/english/eng-1.pdf"
+  },
+  {
+    "course": "english",
+    "courseName": "学术英语与雅思",
+    "lesson": "eng-2",
+    "title": "听力与课堂理解",
+    "file": "pdfs/english/eng-2.pdf"
+  },
+  {
+    "course": "english",
+    "courseName": "学术英语与雅思",
+    "lesson": "eng-3",
+    "title": "口语与展示",
+    "file": "pdfs/english/eng-3.pdf"
+  },
+  {
+    "course": "english",
+    "courseName": "学术英语与雅思",
+    "lesson": "eng-4",
+    "title": "学术写作",
+    "file": "pdfs/english/eng-4.pdf"
+  },
+  {
+    "course": "english",
+    "courseName": "学术英语与雅思",
+    "lesson": "eng-5",
+    "title": "四级与雅思应试",
+    "file": "pdfs/english/eng-5.pdf"
+  },
+  {
+    "course": "python-ai",
+    "courseName": "Python 与 AI 基础",
+    "lesson": "py-1",
+    "title": "Python 基础语法",
+    "file": "pdfs/python-ai/py-1.pdf"
+  },
+  {
+    "course": "python-ai",
+    "courseName": "Python 与 AI 基础",
+    "lesson": "py-2",
+    "title": "数据结构与文件",
+    "file": "pdfs/python-ai/py-2.pdf"
+  },
+  {
+    "course": "python-ai",
+    "courseName": "Python 与 AI 基础",
+    "lesson": "py-3",
+    "title": "NumPy 数值计算",
+    "file": "pdfs/python-ai/py-3.pdf"
+  },
+  {
+    "course": "python-ai",
+    "courseName": "Python 与 AI 基础",
+    "lesson": "py-4",
+    "title": "Pandas 数据分析",
+    "file": "pdfs/python-ai/py-4.pdf"
+  },
+  {
+    "course": "python-ai",
+    "courseName": "Python 与 AI 基础",
+    "lesson": "py-5",
+    "title": "机器学习基础",
+    "file": "pdfs/python-ai/py-5.pdf"
+  },
+  {
+    "course": "python-ai",
+    "courseName": "Python 与 AI 基础",
+    "lesson": "py-6",
+    "title": "PyTorch 与项目实战",
+    "file": "pdfs/python-ai/py-6.pdf"
+  },
+  {
+    "course": "prep",
+    "courseName": "大一下先修",
+    "lesson": "prep-1",
+    "title": "高数下：级数与多元微积分",
+    "file": "pdfs/prep/prep-1.pdf"
+  },
+  {
+    "course": "prep",
+    "courseName": "大一下先修",
+    "lesson": "prep-2",
+    "title": "物理下：电磁、光学与近代物理",
+    "file": "pdfs/prep/prep-2.pdf"
+  },
+  {
+    "course": "prep",
+    "courseName": "大一下先修",
+    "lesson": "prep-3",
+    "title": "化学下：动力学、平衡与电化学",
+    "file": "pdfs/prep/prep-3.pdf"
+  },
+  {
+    "course": "prep",
+    "courseName": "大一下先修",
+    "lesson": "prep-4",
+    "title": "概率论与数理统计",
+    "file": "pdfs/prep/prep-4.pdf"
+  },
+  {
+    "course": "prep",
+    "courseName": "大一下先修",
+    "lesson": "prep-5",
+    "title": "编程进阶：OOP、数据结构与 MATLAB",
+    "file": "pdfs/prep/prep-5.pdf"
+  }
+]
