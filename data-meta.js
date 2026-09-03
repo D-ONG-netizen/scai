@@ -1,9 +1,11 @@
 window.SCAI_META = {
   title: "SCAI ME1 Study Hub",
-  subtitle: "大一全教材学习中心 · 16 周计划 · AI 伴学",
+  version: "2.0.0",
+  versionLabel: "第二版 · 双语双线",
+  subtitle: "大一全教材学习中心 · 国内 ↔ 英文双线 · 学年周计划 · AI 伴学",
   semester: "2026 Fall · Sichuan University - Auckland Institute · Mechanical Engineering 1",
   startLabel: "开学第 1 周（2026 秋）",
-  generated: "2026-09"
+  generated: "2026-09-03"
 };
 
 window.SCAI_BOOKS = [

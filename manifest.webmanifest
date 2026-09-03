@@ -1,6 +1,6 @@
 {
-  "name": "SCAI ME1 Study Hub",
-  "short_name": "SCAI Study",
+  "name": "SCAI ME1 Study Hub v2",
+  "short_name": "SCAI v2",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

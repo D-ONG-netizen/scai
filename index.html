@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#2E6E5E">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<title>SCAI ME1 Study Hub</title>
+<title>SCAI ME1 Study Hub v2</title>
 <style>
 :root{
   --bg:#F5F6F2;
@@ -846,8 +846,8 @@ function renderHomeHTML(){
     </a>`).join("");
   return `
   <section class="hero">
-    <div class="kicker">${esc(meta.semester)}</div>
-    <h1>大一全教材学习中心</h1>
+    <div class="kicker">${esc(meta.semester)} · ${esc(meta.versionLabel||"")}</div>
+    <h1>大一全教材学习中心 · 第二版</h1>
     <p>${esc(meta.subtitle)}。以 SCAI 官方英文教材 + 机械设计制造及其自动化国内教材为双线，用“相同只学一遍、差异单独补”的对照方法、周计划与 AI 伴学把大一课程一次学透。</p>
   </section>
   <div class="stat-row">
