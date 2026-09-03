@@ -256,6 +256,69 @@ th{font:700 .75rem/1.2 var(--font-mono);letter-spacing:.06em;color:var(--muted);
 tr:last-child td{border-bottom:none}
 .compare-table td{min-width:150px}
 .term-table td:first-child{font-family:var(--font-mono);font-size:.82rem;color:var(--accent)}
+.dual-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.dual-tabs button{
+  padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  color:var(--muted);font-size:.86rem;cursor:pointer;
+}
+.dual-tabs button:hover{color:var(--ink);border-color:var(--teal)}
+.dual-tabs button.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.book-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:0 0 16px}
+.book-card{border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:var(--radius);padding:14px 16px;background:var(--surface)}
+.book-card.zh{border-left-color:var(--accent)}
+.book-card.en{border-left-color:var(--blue)}
+.book-card .pair-role{font:700 .72rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.book-card.zh .pair-role{color:var(--accent)}
+.book-card.en .pair-role{color:var(--blue)}
+.book-card h3{margin:4px 0;font-family:var(--font-display);font-size:1.08rem}
+.book-card p{margin:2px 0;font-size:.82rem;color:var(--muted)}
+.pair-arrow{align-self:center;font-size:.82rem;font-weight:700;color:var(--gold);white-space:nowrap}
+.dual-legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;font-size:.8rem;color:var(--muted)}
+.dual-legend span{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:var(--surface2);border:1px solid var(--line)}
+.dual-block{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  padding:16px;margin-bottom:12px;
+}
+.dual-block .phase{font:700 .72rem/1 var(--font-mono);letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.dual-block h3{margin:4px 0 6px;font-family:var(--font-display);font-size:1.12rem}
+.dual-range{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.dual-range div{background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:9px 11px;font-size:.86rem}
+.dual-range small{display:block;font:700 .68rem/1 var(--font-mono);letter-spacing:.06em;margin-bottom:4px;text-transform:uppercase}
+.dual-range .z{color:var(--accent)}
+.dual-range .e{color:var(--blue)}
+.dual-mark{display:grid;gap:7px;margin-top:10px}
+.dual-mark p{margin:0;padding:8px 11px;border-radius:6px;font-size:.85rem;line-height:1.55}
+.dual-mark .same{background:var(--ok-soft);color:var(--ok)}
+.dual-mark .zh{background:var(--accent-soft);color:var(--accent)}
+.dual-mark .en{background:var(--blue-soft);color:var(--blue)}
+.dual-mark b{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.dual-rule{margin-top:10px;font-size:.84rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+.code-lab{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:16px;margin-bottom:12px}
+.code-lab h3{margin:0 0 2px;font-family:var(--font-display);font-size:1.05rem}
+.code-lab .note{color:var(--muted);font-size:.82rem;margin-bottom:10px}
+.code-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.code-col{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.code-col .code-head{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;font:700 .72rem/1 var(--font-mono);color:var(--accent);background:var(--accent-soft)}
+.code-col.en .code-head{color:var(--blue);background:var(--blue-soft)}
+.code-col pre{
+  margin:0;padding:12px;background:var(--surface2);overflow:auto;font:12px/1.55 var(--font-mono);
+  white-space:pre;color:var(--ink);
+}
+.dual-year{overflow:hidden}
+.term-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);margin-bottom:16px;overflow:hidden}
+.term-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:14px 16px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.term-head h3{margin:0;font-family:var(--font-display);font-size:1.2rem}
+.term-head p{margin:0;color:var(--muted);font-size:.82rem}
+.year-phase{padding:13px 16px;border-bottom:1px solid var(--line)}
+.year-phase:last-child{border-bottom:none}
+.year-phase .yr{font:700 .74rem/1 var(--font-mono);color:var(--teal);letter-spacing:.05em}
+.phase-line{display:grid;grid-template-columns:130px 1fr;gap:8px;margin-top:6px;font-size:.84rem}
+.phase-line b{color:var(--muted);font-weight:600;font-size:.78rem;padding-top:1px}
+.phase-line p{margin:0}
+.phase-line.merged p{color:var(--ok)}
+.phase-line.zh p{color:var(--accent)}
+.phase-line.en p{color:var(--blue)}
+.dual-resource-list{display:grid;gap:8px}
 .tt-grid{display:grid;grid-template-columns:90px repeat(5,1fr);gap:6px;overflow-x:auto;min-width:660px}
 .tt-head{font-weight:700;font-size:.85rem}
 .tt-cell{background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:8px;font-size:.8rem;min-height:46px}
@@ -399,6 +462,9 @@ tr:last-child td{border-bottom:none}
   .stat-row{grid-template-columns:1fr 1fr}
   .course-row{grid-template-columns:8px 1fr}
   .course-row .meta{display:none}
+  .book-pair,.code-pair{grid-template-columns:1fr}
+  .pair-arrow{display:none}
+  .dual-range,.phase-line{grid-template-columns:1fr}
   .lesson-grid{grid-template-columns:1fr}
   .lesson summary{flex-direction:column;align-items:flex-start;gap:4px}
   .lesson summary .lmeta{white-space:normal}
@@ -511,6 +577,7 @@ tr:last-child td{border-bottom:none}
 <script src="data-courses.js"></script>
 <script src="lesson-extra.js"></script>
 <script src="data-meta.js"></script>
+<script src="data-dual.js"></script>
 <script>
 (function(){
 "use strict";
@@ -519,6 +586,7 @@ const meta = window.SCAI_META || {};
 const books = window.SCAI_BOOKS || [];
 const plan = window.SCAI_PLAN || {weeks:[],daily:[]};
 const compare = window.SCAI_COMPARE || {similarities:[],differences:[],terms:[]};
+const dual = window.SCAI_DUAL || {groups:[],principle:[],yearPlan:null};
 const DAYS = ["周一","周二","周三","周四","周五","周六","周日"];
 
 const $ = (s,r)=> (r||document).querySelector(s);
@@ -536,6 +604,7 @@ let state = {
   notes: LS.get("scai_notes",{}),
   courseware: LS.get("scai_uploaded_courseware",{}),
   llm: LS.get("scai_llm_config", null),
+  dual: LS.get("scai_dual_group","calculus"),
   chat: [],
   currentCourse: null,
   week: LS.get("scai_plan_week", null),
@@ -553,6 +622,7 @@ function save(){
   LS.set("scai_notes",state.notes);
   LS.set("scai_uploaded_courseware",state.courseware);
   LS.set("scai_llm_config",state.llm);
+  LS.set("scai_dual_group",state.dual);
   LS.set("scai_plan_week",state.week);
   LS.set("scai_timetable",state.timetable);
 }
@@ -566,6 +636,7 @@ function getRoute(){
   const h=location.hash.replace(/^#\/?/,"").replace(/\/$/,"");
   const parts=h.split("/").filter(Boolean);
   if(parts[0]==="course" && parts[1]) return {name:"course",id:parts[1],lesson:parts[2]||null};
+  if(parts[0]==="dual") return {name:"dual",group:parts[1]||state.dual||null};
   const names=["home","plan","books","compare","pdfs"];
   if(names.includes(parts[0])) return {name:parts[0]};
   return {name:"home"};
@@ -625,6 +696,23 @@ function buildSearchIndex(){
     type:"教材",kind:"book",hash:"#/books",title:b.title,sub:b.author+" · "+b.edition,
     text:[b.title,b.author,b.edition,b.course].join(" ")
   }));
+  dual.groups.forEach(g=>{
+    const bookText=[g.subject,g.zh&&g.zh.name,g.en&&g.en.name,(g.zh&&g.zh.author)||"",(g.en&&g.en.author)||""].join(" ");
+    const blockText=(g.blocks||[]).map(b=>[b.zh,b.en,b.same,b.zhOnly||"",b.enOnly||""].join(" ")).join(" ");
+    out.push({
+      type:"双语对照",kind:"dual",hash:"#/dual/"+g.id,title:g.subject+"：中文 ↔ 英文教材对照",
+      sub:(g.zh?g.zh.name:"")+" ↔ "+(g.en?g.en.name:""),
+      text:bookText+" "+blockText+" "+g.strategy
+    });
+  });
+  if(dual.yearPlan){
+    dual.yearPlan.terms.forEach(t=>{
+      out.push({
+        type:"学年计划",kind:"plan",hash:"#/plan",title:"大一双线 · "+t.title,
+        sub:t.note,text:[t.title,t.note,...(t.phases||[]).map(p=>p.zh+" "+p.en)].join(" ")
+      });
+    });
+  }
   (plan.weeks||[]).forEach(w=>out.push({
     type:"计划",kind:"plan",hash:"#/plan",title:"第 "+w.week+" 周 · "+w.theme,
     sub:(w.focus||[]).join(" / "),text:[w.theme,...(w.focus||[]),...(w.milestones||[]),...(w.verify||[])].join(" ")
@@ -699,7 +787,7 @@ function bindSearch(){
 }
 function renderNav(){
   const r=getRoute();
-  const items=[["home","总览"],["plan","16周计划"],["books","教材地图"],["compare","教材对比"],["pdfs","PDF 资料库"]];
+  const items=[["home","总览"],["plan","周计划"],["dual","双语对照"],["books","教材地图"],["pdfs","PDF 资料库"]];
   $("#nav").innerHTML=items.map(([id,label])=>`<a href="#/${id}" class="${r.name===id?"active":""}">${label}</a>`).join("");
 }
 function applyTheme(){
@@ -716,10 +804,12 @@ function render(){
   renderNav(); applyTheme();
   const r=getRoute();
   let html="";
+  if(r.name==="dual" && r.group) state.dual=r.group;
   if(r.name==="course"){
     const c=data.find(x=>x.id===r.id);
     html=c?renderCourseHTML(c):`<section class="hero"><h1>课程不存在</h1><p><a href="#/home">返回总览</a></p></section>`;
   } else if(r.name==="plan") html=renderPlanHTML();
+  else if(r.name==="dual") html=renderDualHTML();
   else if(r.name==="books") html=renderBooksHTML();
   else if(r.name==="compare") html=renderCompareHTML();
   else if(r.name==="pdfs") html=renderPdfLibraryHTML();
@@ -741,6 +831,7 @@ function render(){
     }
   }
   if(r.name==="plan") bindPlan();
+  if(r.name==="dual") bindDual();
 }
 
 function renderHomeHTML(){
@@ -757,7 +848,7 @@ function renderHomeHTML(){
   <section class="hero">
     <div class="kicker">${esc(meta.semester)}</div>
     <h1>大一全教材学习中心</h1>
-    <p>${esc(meta.subtitle)}。以 6 本官方教材为底，用 16 周计划、每课 PDF 讲义、在线题库与 AI 伴学把大一课程一次学透。</p>
+    <p>${esc(meta.subtitle)}。以 SCAI 官方英文教材 + 机械设计制造及其自动化国内教材为双线，用“相同只学一遍、差异单独补”的对照方法、周计划与 AI 伴学把大一课程一次学透。</p>
   </section>
   <div class="stat-row">
     <div class="stat"><b>${data.length}</b><span>课程模块</span></div>
@@ -773,7 +864,10 @@ function renderHomeHTML(){
       <div class="progress-meta"><span>已学 ${p.done} / ${p.total} 课</span><span>待复习 ${p.review} 课</span></div>
     </div>
     ${reviews.length?`<h3>今日复习</h3><div class="review-list">${reviews.map(r=>`<a class="review-link" href="#/course/${r.course.id}/${r.lesson.id}"><span><b>${esc(r.course.name)} · ${esc(r.lesson.title)}</b><br><small>${esc(r.lesson.chapters)}</small></span><span class="due">到期</span></a>`).join("")}</div>`:""}
-    <div style="margin-top:14px"><a class="btn" href="#/plan">查看 16 周计划</a></div>
+    <div class="focus-list" style="margin-top:14px">
+      <a class="btn" href="#/plan">查看周计划</a>
+      <a class="btn btn-primary" href="#/dual">国内 ↔ 国外 双语对照</a>
+    </div>
   </div>
   <div class="section"><h2>课程与教材</h2><span class="note">官方课程 + 自学与先修模块</span></div>
   <div class="course-list">${rows}</div>`;
@@ -785,10 +879,11 @@ function renderPlanHTML(){
   const tabs=plan.weeks.map(w=>`<button data-week="${w.week}" class="${w.week===cw?"active":""}">第 ${w.week} 周</button>`).join("");
   return `
   <section class="hero">
-    <div class="kicker">16 周加速计划</div>
-    <h1>精修官方 6 门 + 大一下先修</h1>
-    <p>前 12 周以本学期课程为主线，第 8 周为期中、第 15 周为期末；第 11-16 周同步启动大一下与转 AI 先修。导入真实课表后，周视图会切换为按节次渲染。</p>
+    <div class="kicker">大一学年 · 双线周计划</div>
+    <h1>国内课程 + 英文课程并行推进</h1>
+    <p>上方为大一学年双线总节奏，下方周计划按当前学期展开：相同概念只学一遍，中文教材补计算与考点，英文教材补直觉与术语。导入真实课表后，周视图会切换为按节次渲染。</p>
   </section>
+  ${renderDualYearPlanHTML()}
   <div class="week-tabs" id="weekTabs">${tabs}</div>
   <div class="panel" id="weekPanel">
     <div class="section" style="margin-top:0"><h2>第 ${wk.week} 周 · ${esc(wk.theme)}</h2><span class="note">${cw===wk.week?"当前周":""}</span></div>
@@ -839,15 +934,26 @@ function renderBooksHTML(){
     const c=data.find(x=>x.id===b.course);
     return `<tr><td>${esc(b.title)}<br><span style="color:var(--muted);font-size:.82rem">${esc(b.author)} · ${esc(b.edition)}</span></td><td>${esc(b.pages)}</td><td>${esc(b.chapters)}</td><td><a href="#/course/${b.course}">${esc(c?c.name:b.course)}</a></td><td><span class="tag tag-blue">${esc(b.role)}</span></td><td>${esc(b.fall)}</td><td>${esc(b.spring)}</td></tr>`;
   }).join("");
+  const pairRows=(dual.groups||[]).map(g=>`
+    <tr>
+      <td>${esc(g.zh.name)}<br><span style="color:var(--muted);font-size:.82rem">${esc(g.zh.author)} · ${esc(g.zh.scope)}</span></td>
+      <td>${esc(g.en.name)}<br><span style="color:var(--muted);font-size:.82rem">${esc(g.en.author)} · ${esc(g.en.scope)}</span></td>
+      <td><a href="#/dual/${g.id}">${esc(g.subject)} 双线对照</a></td>
+    </tr>`).join("");
   return `
   <section class="hero">
     <div class="kicker">教材地图</div>
-    <h1>6 本官方教材，一张地图</h1>
-    <p>每本教材的章节、学期归属与课程页一一对应；合并版工程力学作为章节对照备用源。</p>
+    <h1>国内课标教材 ↔ 英文原版教材</h1>
+    <p>上半表是 SCAI 官方英文教材与章节归属；下半表把机械设计制造及其自动化的国内教材和英文原版配对，进入双语对照可查看“只学一遍”与“差异补课”清单。</p>
   </section>
   <div class="panel"><div class="table-wrap"><table>
     <thead><tr><th>教材</th><th>页数</th><th>章节</th><th>课程</th><th>角色</th><th>本学期</th><th>先修</th></tr></thead>
     <tbody>${rows}</tbody>
+  </table></div></div>
+  <div class="section"><h2>国内课标 ↔ 国外原版</h2><span class="note">六本国内课程教材的双线配对</span></div>
+  <div class="panel"><div class="table-wrap"><table class="compare-table">
+    <thead><tr><th>国内教材</th><th>国外对照</th><th>入口</th></tr></thead>
+    <tbody>${pairRows}</tbody>
   </table></div></div>`;
 }
 
@@ -874,6 +980,121 @@ function renderCompareHTML(){
     <thead><tr><th>English</th><th>中文</th><th>说明</th></tr></thead>
     <tbody>${termRows}</tbody>
   </table></div></div>`;
+}
+
+function dualGroupBy(id){
+  return dual.groups.find(g=>g.id===id)||dual.groups[0];
+}
+function dualGroupHTML(g){
+  const books=`<div class="book-pair">
+    <article class="book-card zh">
+      <div class="pair-role">国内课标 · 中文教材</div>
+      <h3>${esc(g.zh.name)}</h3>
+      <p>${esc(g.zh.author)}</p>
+      <p>${esc(g.zh.chapters)} · ${esc(g.zh.scope)}</p>
+    </article>
+    <div class="pair-arrow">合并 ↓ 不重复</div>
+    <article class="book-card en">
+      <div class="pair-role">英文原版 · 英文课程</div>
+      <h3>${esc(g.en.name)}</h3>
+      <p>${esc(g.en.author)}</p>
+      <p>${esc(g.en.chapters)} · ${esc(g.en.scope)}</p>
+    </article>
+  </div>`;
+  const blocks=(g.blocks||[]).map(b=>`
+    <div class="dual-block">
+      <div class="phase">${esc(b.phase)}</div>
+      <h3>${esc(g.subject)}：国内 ↔ 国外 对照块</h3>
+      <div class="dual-range">
+        <div><small class="z">国内教材</small>${esc(b.zh)}</div>
+        <div><small class="e">英文教材</small>${esc(b.en)}</div>
+      </div>
+      <div class="dual-mark">
+        <p class="same"><b>✓ 相同 · 只学一遍</b>${esc(b.same)}</p>
+        ${b.zhOnly?`<p class="zh"><b>中 · 国内教材额外</b>${esc(b.zhOnly)}</p>`:""}
+        ${b.enOnly?`<p class="en"><b>EN · 英文教材额外</b>${esc(b.enOnly)}</p>`:""}
+      </div>
+      ${b.rule?`<div class="dual-rule">策略：${esc(b.rule)}</div>`:""}
+    </div>`).join("");
+  const labs=(g.codeLabs||[]).map(l=>`
+    <div class="code-lab">
+      <h3>${esc(l.title)}</h3>
+      <div class="note">${esc(l.note)}</div>
+      <div class="code-pair">
+        <div class="code-col">
+          <div class="code-head">${esc(l.zh.label)}</div>
+          <pre>${esc(l.zh.code)}</pre>
+        </div>
+        <div class="code-col en">
+          <div class="code-head">${esc(l.en.label)}</div>
+          <pre>${esc(l.en.code)}</pre>
+        </div>
+      </div>
+    </div>`).join("");
+  const resources=(g.resources||[]).map(p=>`
+    <a class="practice-link" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <span>${esc(p.title)}<br><span class="note">${esc(p.note)}</span></span>
+      <span>↗</span>
+    </a>`).join("");
+  return `
+  <div class="panel"><h3>怎么合并学</h3><p>${esc(g.strategy)}</p></div>
+  <div class="section"><h2>教材配对</h2><span class="note">${esc(g.subject)} · ${esc(g.course)}</span></div>
+  ${books}
+  <div class="dual-legend">
+    <span><b style="color:var(--ok)">✓ 相同</b>概念学一次</span>
+    <span><b style="color:var(--accent)">中</b>国内教材额外：期末考点</span>
+    <span><b style="color:var(--blue)">EN</b>英文教材额外：英文课程重点</span>
+  </div>
+  <div class="section"><h2>精细分块对照</h2><span class="note">同概念不重复，只补不同处</span></div>
+  ${blocks}
+  ${labs?`<div class="section"><h2>C / C++ 语法差异实验室</h2><span class="note">同一种逻辑，两种语法外壳</span></div>${labs}`:""}
+  ${resources?`<div class="section"><h2>实践入口</h2><span class="note">教材、课程与已做项目</span></div><div class="dual-resource-list">${resources}</div>`:""}`;
+}
+function renderDualHTML(){
+  const active=dualGroupBy(state.dual);
+  const tabs=dual.groups.map(g=>`<button data-dual-group="${g.id}" class="${g.id===active.id?"active":""}">${esc(g.subject)}</button>`).join("");
+  return `
+  <section class="hero">
+    <div class="kicker">双线并行 · 不重复学习</div>
+    <h1>${esc(dual.title)}</h1>
+    <p>${esc(dual.subtitle)}。把国内课标教材与英文原版教材按“相同只学一遍、中文额外、英文额外”三栏对照，避免两套教材各学一遍。</p>
+  </section>
+  <div class="panel">
+    <h3>总原则</h3>
+    <ul class="check-list">${dual.principle.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
+  </div>
+  <div class="dual-tabs" id="dualTabs">${tabs}</div>
+  <div id="dualBody">${dualGroupHTML(active)}</div>`;
+}
+function bindDual(){
+  $$("#dualTabs button").forEach(btn=>btn.addEventListener("click",()=>{
+    state.dual=btn.dataset.dualGroup;
+    save();
+    if(location.hash!=="#/dual/"+state.dual) location.hash="#/dual/"+state.dual;
+    render();
+  }));
+}
+function renderDualYearPlanHTML(){
+  const y=dual.yearPlan;
+  if(!y||!y.terms) return "";
+  return `
+  <div class="section" style="margin-top:34px"><h2>大一学年 · 双线并行总节奏</h2><span class="note">国内课程 ↔ SCAI 英文课程</span></div>
+  <p class="empty" style="padding:6px 0 14px">${esc(y.intro)}</p>
+  ${y.terms.map(t=>`
+    <div class="term-card">
+      <div class="term-head">
+        <div><h3>${esc(t.title)}</h3><p>${esc(t.note)}</p></div>
+      </div>
+      ${(t.phases||[]).map(p=>`
+        <div class="year-phase">
+          <div class="yr">${esc(p.range)}</div>
+          <div class="phase-line zh"><b>国内进度</b><p>${esc(p.zh)}</p></div>
+          <div class="phase-line en"><b>英文进度</b><p>${esc(p.en)}</p></div>
+          <div class="phase-line merged"><b>合并学</b><p>${esc(p.merged)}</p></div>
+          <div class="phase-line zh"><b>中文补差异</b><p>${esc(p.zhDiff)}</p></div>
+          <div class="phase-line en"><b>英文补差异</b><p>${esc(p.enDiff)}</p></div>
+        </div>`).join("")}
+    </div>`).join("")}`;
 }
 
 function renderPdfLibraryHTML(){
@@ -1295,7 +1516,7 @@ function bindSettings(){
   $("#cfgClear").addEventListener("click",()=>{
     if(!confirm("确定清除本地学习数据与 AI 配置？")) return;
     state.quiz={}; state.progress={}; state.notes={}; state.courseware={}; state.llm=null; state.chat=[]; state.timetable=null; state.week=null;
-    ["scai_quiz_scores","scai_progress","scai_notes","scai_uploaded_courseware","scai_llm_config","scai_plan_week","scai_timetable"].forEach(k=>LS.del(k));
+    ["scai_quiz_scores","scai_progress","scai_notes","scai_uploaded_courseware","scai_llm_config","scai_dual_group","scai_plan_week","scai_timetable"].forEach(k=>LS.del(k));
     if(window.LLM_CONFIG) window.LLM_CONFIG.apiKey="";
     render();
     toast("本地数据已清除");

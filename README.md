@@ -1,8 +1,6 @@
-#  ME Study Hub
+# SCAI ME1 Study Hub
 
-这个库的目的是让同学在全英语教学模式下进行课前的预习和课后的复习，能够高效抓住本课中的知识点，并进行易错点练习，更好的掌握知识，建立完整的学习基础，加快适应大学生活
-
-机械大一全教材学习网站，双击 `index.html` 即可使用，无需安装或构建。
+川大奥克兰学院机械 1 班大一全教材学习网站，双击 `index.html` 即可使用，无需安装或构建。
 
 ## 已整合教材
 
@@ -11,13 +9,21 @@
 - Principles of Physics 12e（Walker）
 - Chemistry: Atoms First 4e（Burdge）
 - Engineering Mechanics Statics 9e + Dynamics 9e（Meriam），合并版作备用对照
+- 双线对照模块：机械设计制造及其自动化国内教材 ↔ 英文原版教材
+  - 同济《高等数学》↔ Stewart《Essential Calculus 2e》
+  - 同济《线性代数》↔ Poole《Linear Algebra》
+  - 浙大《概率论与数理统计》↔ MIT 18.05 / Blitzstein
+  - 马文蔚《物理学》↔ Walker《Principles of Physics》
+  - 谭浩强《C程序设计》↔ Gaddis《Starting Out with C++》
+  - 子应用 `cs-app/`：嵌入 CS 文件夹中已完成的 SCAI C++ 自学导航
 
 ## 功能
 
 - 总览页：9 个课程模块、本周任务、Quiz 完成度、视频数量
 - 16 周计划：周次切换、每日时间槽、真实课表 CSV/JSON 导入
+- 大一学年双线总节奏：国内课程与 SCAI 英文课程按“相同只学一遍、差异单独补”排块
 - 教材地图：6 本教材的章节、学期归属与课程映射
-- 教材对比：同济高数 vs Stewart vs Poole，含中英术语对照
+- 双语对照：六个科目的中英教材精细分块，含“✓ 相同 / 中 / EN”三类差异与 C/C++ 语法对照
 - 课程页：知识点、易错点、高频考点、匹配视频、PDF 讲义、在线题库
 - PDF 资料库：61 份每课 PDF，含随堂练习、答案解析与在线题库链接
 - 全局搜索：`Ctrl+K` 或顶栏搜索按钮，可检索课程、知识点、视频、教材和每周计划
@@ -52,7 +58,7 @@ API Key 存放在 `config.local.js`，该文件已被 `.gitignore` 忽略，不�
 
 ## 本地数据
 
-浏览器本地存储键：`scai_llm_config`、`scai_uploaded_courseware`、`scai_quiz_scores`、`scai_progress`、`scai_notes`、`scai_plan_week`、`scai_timetable`。设置面板中的“清除本地数据”可一键清空。
+浏览器本地存储键：`scai_llm_config`、`scai_uploaded_courseware`、`scai_quiz_scores`、`scai_progress`、`scai_notes`、`scai_dual_group`、`scai_plan_week`、`scai_timetable`。设置面板中的“清除本地数据”可一键清空。
 
 ## 课表导入格式
 

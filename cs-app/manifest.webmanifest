@@ -1,0 +1,27 @@
+{
+  "name": "SCAI C++ 自学导航",
+  "short_name": "SCAI C++",
+  "description": "SCAI 转 CS 准备：C++ 自学路线图、章节精讲与免费公开课",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6f3",
+  "theme_color": "#0f766e",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
